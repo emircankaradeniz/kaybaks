@@ -1,4 +1,4 @@
-import { env } from "cloudflare:workers";
+import { del, get, list, put } from "@vercel/blob";
 
 export type ManagedProduct = {
   id: string;
@@ -18,36 +18,27 @@ export type ManagedProduct = {
 
 export type SiteSettings = Record<string, string>;
 
-type D1Result<T> = { results?: T[] };
-type D1Statement = {
-  bind: (...values: unknown[]) => D1Statement;
-  run: () => Promise<unknown>;
-  all: <T>() => Promise<D1Result<T>>;
-  first: <T>() => Promise<T | null>;
-};
-type D1Like = {
-  prepare: (sql: string) => D1Statement;
-  batch: (statements: D1Statement[]) => Promise<unknown>;
-};
-type R2Like = {
-  put: (key: string, value: ReadableStream | ArrayBuffer, options?: unknown) => Promise<unknown>;
-  get: (key: string) => Promise<{ body: ReadableStream; httpMetadata?: { contentType?: string }; size?: number } | null>;
-  delete: (key: string) => Promise<unknown>;
+export type ManagedMedia = {
+  id: string;
+  objectKey: string;
+  filename: string;
+  contentType: string;
+  size: number;
+  createdAt: string;
+  url: string;
 };
 
-const runtimeEnv = env as unknown as {
-  DB: D1Like;
-  MEDIA: R2Like;
-  ADMIN_PASSWORD?: string;
-  ADMIN_SESSION_SECRET?: string;
+type ContentData = {
+  products: ManagedProduct[];
+  settings: SiteSettings;
+  media: ManagedMedia[];
 };
 
-export const db = runtimeEnv.DB;
-export const mediaBucket = runtimeEnv.MEDIA;
-export const adminPassword = runtimeEnv.ADMIN_PASSWORD ?? "";
-export const adminSessionSecret = runtimeEnv.ADMIN_SESSION_SECRET ?? "";
+const CONTENT_PATH = "kaybaks/content.json";
+export const adminPassword = process.env.ADMIN_PASSWORD ?? "";
+export const adminSessionSecret = process.env.ADMIN_SESSION_SECRET ?? "";
 
-const defaultProducts = [
+const defaultProductRows = [
   ["oluklu-mukavva-levha", "Oluklu Mukavva Levha", "Levha & Mukavva", "Farklı kalınlık ve dalga tiplerinde mukavva levha çözümleri.", "/media/products/corrugated-sheet.png", 67, 728],
   ["normal-kutu", "Normal Kutu", "Kutu Çözümleri", "Standart ölçülerde dayanıklı ve ekonomik kutular.", "/media/products/standard-box.png", 269, 728],
   ["kalip-kesim-kutu", "Kalıp Kesim Kutu", "Kutu Çözümleri", "Özel kesim, baskılı ve kreatif kutu çözümleri.", "/media/products/die-cut-box.png", 472, 728],
@@ -73,90 +64,139 @@ export const defaultSettings: SiteSettings = {
   project_count: "724+",
 };
 
-let initialized = false;
-
-export async function ensureDatabase() {
-  if (initialized) return;
-
-  await db.batch([
-    db.prepare("CREATE TABLE IF NOT EXISTS products (id TEXT PRIMARY KEY NOT NULL, slug TEXT NOT NULL UNIQUE, name TEXT NOT NULL, category TEXT NOT NULL DEFAULT 'Kutu Çözümleri', short_description TEXT NOT NULL DEFAULT '', description TEXT NOT NULL DEFAULT '', image_url TEXT NOT NULL DEFAULT '', crop_x INTEGER NOT NULL DEFAULT 67, crop_y INTEGER NOT NULL DEFAULT 728, sort_order INTEGER NOT NULL DEFAULT 0, is_active INTEGER NOT NULL DEFAULT 1, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)"),
-    db.prepare("CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL DEFAULT '', updated_at TEXT NOT NULL)"),
-    db.prepare("CREATE TABLE IF NOT EXISTS media (id TEXT PRIMARY KEY NOT NULL, object_key TEXT NOT NULL UNIQUE, filename TEXT NOT NULL, content_type TEXT NOT NULL, size INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL)"),
-    db.prepare("CREATE INDEX IF NOT EXISTS idx_products_active_sort ON products(is_active, sort_order)"),
-    db.prepare("CREATE INDEX IF NOT EXISTS idx_media_created_at ON media(created_at)"),
-  ]);
-
-  const now = new Date().toISOString();
-  await db.batch(
-    defaultProducts.map((product, index) =>
-      db.prepare("INSERT OR IGNORE INTO products (id, slug, name, category, short_description, description, image_url, crop_x, crop_y, sort_order, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?)")
-        .bind(crypto.randomUUID(), product[0], product[1], product[2], product[3], product[3], product[4], product[5], product[6], index, now, now),
-    ),
-  );
-  await db.batch(
-    defaultProducts.map((product) =>
-      db.prepare("UPDATE products SET image_url = ?, updated_at = ? WHERE slug = ? AND image_url = ''")
-        .bind(product[4], now, product[0]),
-    ),
-  );
-  await db.batch(
-    Object.entries(defaultSettings).map(([key, value]) =>
-      db.prepare("INSERT OR IGNORE INTO settings (key, value, updated_at) VALUES (?, ?, ?)").bind(key, value, now),
-    ),
-  );
-  await db.prepare("PRAGMA optimize").run();
-  initialized = true;
+function createDefaultProducts(): ManagedProduct[] {
+  const now = new Date(0).toISOString();
+  return defaultProductRows.map((product, index) => ({
+    id: product[0], slug: product[0], name: product[1], category: product[2],
+    shortDescription: product[3], description: product[3], imageUrl: product[4],
+    cropX: product[5], cropY: product[6], sortOrder: index, isActive: true,
+    createdAt: now, updatedAt: now,
+  }));
 }
 
-function mapProduct(row: Record<string, unknown>): ManagedProduct {
+function defaults(): ContentData {
+  return { products: createDefaultProducts(), settings: { ...defaultSettings }, media: [] };
+}
+
+function blobConfigured() {
+  return Boolean(process.env.BLOB_READ_WRITE_TOKEN || (process.env.VERCEL_OIDC_TOKEN && process.env.BLOB_STORE_ID));
+}
+
+async function readContent(): Promise<ContentData> {
+  if (!blobConfigured()) return defaults();
+  const result = await get(CONTENT_PATH, { access: "private", useCache: false });
+  if (!result || result.statusCode !== 200) return defaults();
+  const stored = JSON.parse(await new Response(result.stream).text()) as Partial<ContentData>;
   return {
-    id: String(row.id),
-    slug: String(row.slug),
-    name: String(row.name),
-    category: String(row.category),
-    shortDescription: String(row.short_description),
-    description: String(row.description),
-    imageUrl: String(row.image_url || ""),
-    cropX: Number(row.crop_x),
-    cropY: Number(row.crop_y),
-    sortOrder: Number(row.sort_order),
-    isActive: Boolean(row.is_active),
-    createdAt: String(row.created_at),
-    updatedAt: String(row.updated_at),
+    products: Array.isArray(stored.products) ? stored.products : createDefaultProducts(),
+    settings: { ...defaultSettings, ...(stored.settings ?? {}) },
+    media: Array.isArray(stored.media) ? stored.media : [],
   };
 }
 
+async function writeContent(data: ContentData) {
+  if (!blobConfigured()) throw new Error("Vercel Blob bağlantısı eksik. Vercel Storage bölümünden bir Blob deposu bağlayın.");
+  await put(CONTENT_PATH, JSON.stringify(data), {
+    access: "private",
+    contentType: "application/json; charset=utf-8",
+    allowOverwrite: true,
+    cacheControlMaxAge: 60,
+  });
+}
+
 export async function getProducts(includeInactive = false) {
-  await ensureDatabase();
-  const query = includeInactive
-    ? "SELECT * FROM products ORDER BY sort_order, created_at"
-    : "SELECT * FROM products WHERE is_active = 1 ORDER BY sort_order, created_at";
-  const result = await db.prepare(query).all<Record<string, unknown>>();
-  return (result.results ?? []).map(mapProduct);
+  const products = (await readContent()).products
+    .filter((product) => includeInactive || product.isActive)
+    .sort((a, b) => a.sortOrder - b.sortOrder || a.createdAt.localeCompare(b.createdAt));
+  return products;
 }
 
 export async function getProduct(slug: string) {
-  await ensureDatabase();
-  const row = await db.prepare("SELECT * FROM products WHERE slug = ? LIMIT 1").bind(slug).first<Record<string, unknown>>();
-  return row ? mapProduct(row) : null;
+  return (await readContent()).products.find((product) => product.slug === slug) ?? null;
 }
 
 export async function getSettings() {
-  await ensureDatabase();
-  const result = await db.prepare("SELECT key, value FROM settings").all<{ key: string; value: string }>();
-  return { ...defaultSettings, ...Object.fromEntries((result.results ?? []).map((item) => [item.key, item.value])) } as SiteSettings;
+  return (await readContent()).settings;
 }
 
 export async function getMedia() {
-  await ensureDatabase();
-  const result = await db.prepare("SELECT * FROM media ORDER BY created_at DESC").all<Record<string, unknown>>();
-  return (result.results ?? []).map((row) => ({
-    id: String(row.id),
-    objectKey: String(row.object_key),
-    filename: String(row.filename),
-    contentType: String(row.content_type),
-    size: Number(row.size),
-    createdAt: String(row.created_at),
-    url: `/api/media/${String(row.object_key).split("/").map(encodeURIComponent).join("/")}`,
-  }));
+  return (await readContent()).media.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export async function saveProduct(input: Partial<ManagedProduct>) {
+  const data = await readContent();
+  const now = new Date().toISOString();
+  const id = String(input.id || crypto.randomUUID());
+  const existing = data.products.find((product) => product.id === id);
+  const product: ManagedProduct = {
+    id,
+    slug: String(input.slug ?? existing?.slug ?? ""),
+    name: String(input.name ?? existing?.name ?? ""),
+    category: String(input.category ?? existing?.category ?? "Kutu Çözümleri"),
+    shortDescription: String(input.shortDescription ?? existing?.shortDescription ?? ""),
+    description: String(input.description ?? existing?.description ?? ""),
+    imageUrl: String(input.imageUrl ?? existing?.imageUrl ?? ""),
+    cropX: Number(input.cropX ?? existing?.cropX ?? 67),
+    cropY: Number(input.cropY ?? existing?.cropY ?? 728),
+    sortOrder: Number(input.sortOrder ?? existing?.sortOrder ?? data.products.length),
+    isActive: input.isActive !== false,
+    createdAt: existing?.createdAt ?? String(input.createdAt || now),
+    updatedAt: now,
+  };
+  const duplicate = data.products.some((item) => item.id !== id && item.slug === product.slug);
+  if (duplicate) throw new Error("DUPLICATE_SLUG");
+  data.products = existing ? data.products.map((item) => item.id === id ? product : item) : [...data.products, product];
+  await writeContent(data);
+  return product;
+}
+
+export async function deleteProduct(id: string) {
+  const data = await readContent();
+  data.products = data.products.filter((product) => product.id !== id);
+  await writeContent(data);
+}
+
+export async function saveSettings(settings: SiteSettings) {
+  const data = await readContent();
+  data.settings = { ...defaultSettings, ...settings };
+  await writeContent(data);
+}
+
+export async function addMedia(media: ManagedMedia) {
+  const data = await readContent();
+  data.media = [media, ...data.media.filter((item) => item.id !== media.id)];
+  await writeContent(data);
+}
+
+export async function deleteMedia(objectKey: string) {
+  const data = await readContent();
+  const item = data.media.find((media) => media.objectKey === objectKey);
+  if (item) await del(item.objectKey);
+  data.media = data.media.filter((media) => media.objectKey !== objectKey);
+  await writeContent(data);
+}
+
+export async function uploadMedia(file: File) {
+  if (!blobConfigured()) throw new Error("Vercel Blob bağlantısı eksik.");
+  const extension = file.name.split(".").pop()?.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() || "bin";
+  const id = crypto.randomUUID();
+  const pathname = `kaybaks/uploads/${Date.now()}-${id}.${extension}`;
+  const blob = await put(pathname, file, { access: "private", contentType: file.type, addRandomSuffix: false });
+  const media: ManagedMedia = {
+    id, objectKey: blob.pathname, filename: file.name, contentType: file.type,
+    size: file.size, createdAt: new Date().toISOString(),
+    url: `/api/media/${blob.pathname.split("/").map(encodeURIComponent).join("/")}`,
+  };
+  await addMedia(media);
+  return media;
+}
+
+export async function getMediaObject(objectKey: string) {
+  return get(objectKey, { access: "private" });
+}
+
+export async function verifyBlobConnection() {
+  if (!blobConfigured()) return false;
+  await list({ prefix: "kaybaks/", limit: 1 });
+  return true;
 }

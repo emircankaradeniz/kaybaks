@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // Vinext serves local assets directly; bypassing the Next image proxy
-    // prevents redirected image requests from appearing broken in browsers.
+    // Product imagery is already prepared at display resolution. Serving it
+    // directly also keeps private Blob proxy URLs predictable on Vercel.
     unoptimized: true,
   },
 };
