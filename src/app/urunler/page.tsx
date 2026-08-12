@@ -1,20 +1,19 @@
-import { ReferencePage } from "@/components/ui/reference-page";
+import Image from "next/image";
+import Link from "next/link";
+import { Box, Check, Factory, Layers3, Package, Paintbrush, Recycle, ShieldCheck } from "lucide-react";
+import { ProductCardCode, ProductImage, SectionHead } from "@/components/ui/kaybaks-blocks";
+import { getProducts } from "@/lib/content-store";
 
-export default function ProductsPage() {
-  return (
-    <ReferencePage
-      src="/reference/urunler.png"
-      title="Ürünlerimiz"
-      hotspots={[
-        { href: "/urunler/oluklu-mukavva-levha", label: "Oluklu Mukavva Levha", left: 6.2, top: 43.2, width: 20, height: 14 },
-        { href: "/urunler/normal-kutu", label: "Normal Kutu", left: 28.1, top: 43.2, width: 20, height: 14 },
-        { href: "/urunler/kalip-kesim-kutu", label: "Kalıp Kesim Kutu", left: 50, top: 43.2, width: 20, height: 14 },
-        { href: "/urunler/teleskopik-kutu", label: "Teleskopik Kutu", left: 72, top: 43.2, width: 21, height: 14 },
-        { href: "/urunler/ondule", label: "Ondüle", left: 6.2, top: 58.5, width: 26.2, height: 10.8 },
-        { href: "/urunler/demonte-mobilya-kutulari", label: "Demonte Mobilya Kutuları", left: 35, top: 58.5, width: 27.8, height: 10.8 },
-        { href: "/urunler/ozel-tasarim-ambalaj", label: "Özel Tasarım Ambalaj", left: 65, top: 58.5, width: 28.2, height: 10.8 },
-        { href: "/iletisim#teklif", label: "Teklif Al", left: 79, top: 83.7, width: 10, height: 3 },
-      ]}
-    />
-  );
-}
+export const dynamic = "force-dynamic";
+
+const applications = [
+  ["E-Ticaret & Lojistik","/media/kaybaks-video-5.png"], ["Beyaz Eşya","/media/kaybaks-video-4.png"], ["Mobilya","/media/kaybaks-video-3-hd.jpg"], ["Otomotiv","/media/kaybaks-video-1.png"], ["Gıda","/media/kaybaks-video-2.png"], ["Tekstil","/media/kaybaks-video-5.png"]
+];
+
+export default async function ProductsPage(){const managedProducts=await getProducts();const displayProducts=managedProducts.map(product=>({slug:product.slug,title:product.name,text:product.shortDescription,crop:[product.cropX,product.cropY],imageUrl:product.imageUrl}));return <>
+  <section className="inner-hero"><div className="container inner-hero-grid"><div><div className="breadcrumbs"><span>Ana Sayfa</span><span>/</span><strong>Ürünler</strong></div><h1>Ürünlerimiz</h1><p>İhtiyacınıza özel oluklu mukavva ürünlerimizle ürünlerinizi güvenle sarar, markanızı ileri taşırız.</p><div style={{display:"flex",gap:25,marginTop:25}}><span className="arrow-link"><ShieldCheck size={18}/> Yüksek Kalite</span><span className="arrow-link"><Recycle size={18}/> Çevre Dostu</span><span className="arrow-link"><Paintbrush size={18}/> Özel Üretim</span></div></div><div className="inner-visual"><div className="factory-photo" /></div></div></section>
+  <section className="section-sm"><div className="container"><div className="filter-bar"><span className="filter-pill active">Tüm Ürünler</span><span className="filter-pill"><Box size={13}/> Kutu Çözümleri</span><span className="filter-pill"><Layers3 size={13}/> Levha & Mukavva</span><span className="filter-pill">Özel Tasarım</span><span className="filter-pill">Demonte & Mobilya</span><span className="filter-pill">Koruyucu Ürünler</span></div><div className="featured-product"><ProductImage crop={[67,728]}/><div><h2>Oluklu Mukavva Levha</h2><p>Yüksek mukavemetli, farklı dalga tiplerinde oluklu levhalarımız; ürünlerinizi darbe, titreşim ve dış etkenlere karşı korur.</p><ul className="check-list"><li>Farklı Dalga Seçenekleri</li><li>Özel Ebat ve Gramaj Seçenekleri</li><li>Geri Dönüştürülebilir ve Ekonomik</li></ul><Link className="btn btn-outline" href="/urunler/oluklu-mukavva-levha">Ürünü İncele</Link></div><div className="use-card"><h3>Kullanım Alanları</h3><p>□ Kutu Üretimi</p><p>□ Ara Katman Koruma</p><p>□ Yüzey Koruma</p><p>□ Ambalaj Ayırıcı</p></div></div></div></section>
+  <section className="section"><div className="container"><div className="content-block"><span className="kicker">Ürün Kategorilerimiz</span><h2>İhtiyacınıza Uygun Ambalaj Çözümleri</h2></div><div className="product-grid">{displayProducts.map(item=><ProductCardCode key={item.slug} item={item}/>)}</div></div></section>
+  <section className="section-sm soft-section"><div className="container"><div className="content-block"><span className="kicker">İlham Alın</span><h2>Ürünlerimiz Nerelerde Kullanılıyor?</h2></div><div className="application-grid">{applications.map(([title,src])=><div className="application-card" key={title}><Image src={src} alt={title} width={500} height={300}/><span>{title}</span></div>)}</div></div></section>
+  <section className="section-sm"><div className="container"><div className="cta-band"><div><ProductImage crop={[675,728]}/></div><div style={{gridColumn:"span 2"}}><h2>Size en uygun ambalaj çözümünü birlikte belirleyelim.</h2><p>İhtiyacınıza özel ölçü, baskı ve malzeme seçenekleriyle teklifinizi hızla hazırlayalım.</p></div><Link className="btn btn-primary" href="/iletisim#teklif">Teklif Al</Link></div></div></section>
+  </>}

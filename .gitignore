@@ -19,6 +19,12 @@
 
 # production
 /build
+/dist
+/.vinext
+
+# local Cloudflare/runtime data
+/.wrangler
+/artifacts/runtime
 
 # misc
 .DS_Store

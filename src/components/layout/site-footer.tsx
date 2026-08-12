@@ -1,72 +1,23 @@
 import Link from "next/link";
-import { company, footerGroups, primaryNav } from "@/data/company";
-import { LogoMark } from "@/components/ui/logo-mark";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { getSettings } from "@/lib/content-store";
 
-export function SiteFooter() {
-  const currentYear = new Date().getFullYear();
-
+export async function SiteFooter() {
+  const settings = await getSettings();
   return (
-    <footer className="section-space border-t border-white/8 pb-10">
-      <div className="container-shell">
-        <div className="grid gap-8 rounded-[1.8rem] border border-white/10 bg-white/4 px-6 py-8 sm:px-8 lg:grid-cols-[1.1fr_0.9fr_0.9fr_1fr]">
-          <div>
-            <LogoMark />
-            <p className="mt-5 max-w-sm text-sm leading-7 text-stone-300/75">
-              Kayseri merkezli oluklu mukavva, karton kutu ve özel ölçü ambalaj
-              çözümlerini kurumsal, modern ve güven veren bir dille sunan üretim odaklı web
-              deneyimi.
-            </p>
-          </div>
-          {footerGroups.map((group) => (
-            <div key={group.title}>
-              <h2 className="heading-display text-2xl uppercase text-white">{group.title}</h2>
-              <div className="mt-4 flex flex-col gap-3">
-                {group.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-sm text-stone-300/75 hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-          <div>
-            <h2 className="heading-display text-2xl uppercase text-white">İletişim</h2>
-            <div className="mt-4 space-y-3 text-sm leading-7 text-stone-300/78">
-              <p>{company.addressLine}</p>
-              <p>{company.locality}</p>
-              <p>
-                <a href={`tel:${company.phoneHref}`} className="hover:text-white">
-                  {company.phone}
-                </a>
-              </p>
-              <p>
-                <a href={`mailto:${company.email}`} className="hover:text-white">
-                  {company.email}
-                </a>
-              </p>
-              <p>
-                <a href={company.youtube} target="_blank" rel="noreferrer" className="hover:text-white">
-                  YouTube
-                </a>
-              </p>
-            </div>
-          </div>
+    <footer className="site-footer">
+      <div className="container footer-grid">
+        <div>
+          <Link href="/" className="brand footer-brand"><span className="brand-main">KAY<span>BAKS</span></span><small>OLUKLU MUKAVVA & KUTU</small></Link>
+          <p>Kayseri’de oluklu mukavva ve ambalaj çözümlerinde kaliteli, güvenilir ve sürdürülebilir üretim anlayışıyla hizmet veriyoruz.</p>
+          <div className="socials"><span>in</span><span>◎</span><span>▶</span></div>
         </div>
-        <div className="mt-6 flex flex-col gap-3 border-t border-white/8 pt-6 text-sm text-stone-400 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap gap-4">
-            {primaryNav.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:text-white">
-                {item.label}
-              </Link>
-            ))}
-          </div>
-          <p>© {currentYear} KAYBAKS. Tüm hakları saklıdır.</p>
-        </div>
+        <div><h3>Kurumsal</h3><Link href="/kurumsal">Hakkımızda</Link><Link href="/kurumsal#vizyon">Vizyon & Misyon</Link><Link href="/uretim-kalite">Kalite Politikamız</Link><Link href="/iletisim">İnsan Kaynakları</Link></div>
+        <div><h3>Ürünler</h3><Link href="/urunler/oluklu-mukavva-levha">Oluklu Mukavva Levha</Link><Link href="/urunler">Kutu Çeşitleri</Link><Link href="/urunler/ozel-tasarim-ambalaj">Özel Tasarım Ambalaj</Link><Link href="/urunler">Tüm Ürünler</Link></div>
+        <div><h3>Sektörler</h3><Link href="/sektorel-cozumler">E-Ticaret</Link><Link href="/sektorel-cozumler">Mobilya</Link><Link href="/sektorel-cozumler">Gıda</Link><Link href="/sektorel-cozumler">Sanayi</Link><Link href="/sektorel-cozumler">Perakende</Link></div>
+        <div><h3>İletişim</h3><p className="contact-row"><MapPin /> {settings.address}</p><a className="contact-row" href={`tel:${settings.phone_href}`}><Phone /> {settings.phone}</a><a className="contact-row" href={`mailto:${settings.email}`}><Mail /> {settings.email}</a></div>
       </div>
+      <div className="container footer-bottom"><span>© 2024 KAYBAKS. Tüm hakları saklıdır.</span><div><a href="#">KVKK</a><a href="#">Gizlilik Politikası</a><a href="#">Çerez Politikası</a></div></div>
     </footer>
   );
 }
