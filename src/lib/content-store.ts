@@ -45,6 +45,7 @@ const defaultProductRows = [
   ["teleskopik-kutu", "Teleskopik Kutu", "Kutu Çözümleri", "İç içe geçen yapısıyla ekstra koruma sağlar.", "/media/products/telescope-box.png", 675, 728],
   ["ondule", "Ondüle", "Koruyucu Ürünler", "Esnek ve koruyucu ondüle malzeme çözümleri.", "/media/products/ondule-products.png", 67, 984],
   ["demonte-mobilya-kutulari", "Demonte Mobilya Kutuları", "Demonte & Mobilya", "Mobilya ve parçalar için özel ölçü ve dayanıklılık.", "/media/products/furniture-box.png", 338, 984],
+  ["ozel-olcu-kutu", "Özel Ölçü Kutu", "Özel Formlar", "Standart dışı ürünler için ölçüye göre planlanan kutu çözümleri.", "/media/products/custom-size-box.png", 472, 984],
   ["ozel-tasarim-ambalaj", "Özel Tasarım Ambalaj", "Özel Tasarım", "Markanıza özel tasarım ambalaj çözümleri.", "/media/products/premium-packaging.png", 629, 984],
 ] as const;
 
