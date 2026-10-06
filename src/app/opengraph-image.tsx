@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ fontSize: 84, fontWeight: 700, lineHeight: 1, textTransform: "uppercase" }}>
-              Ambalajın Güçlü Formu
+              Ürünün Yoluna Göre Ambalaj
             </div>
             <div style={{ fontSize: 28, color: "rgba(255,255,255,0.76)" }}>
               Kayseri merkezli oluklu mukavva, karton kutu ve özel ambalaj çözümleri

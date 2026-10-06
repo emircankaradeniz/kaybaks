@@ -25,7 +25,7 @@ export default async function ProductDetailPage({ params }: Props) {
   const primaryImage = managed?.imageUrl || catalog?.media[0] || fallbackImages[slug] || "/media/products/standard-box.png";
   const media = catalog?.media?.length ? catalog.media : [primaryImage, "/media/kaybaks-video-2.png", "/media/kaybaks-video-4.png"];
   const useCases = catalog?.useCases || ["Genel sevkiyat", "Depolama", "Ürün paketleme"];
-  const features = catalog?.features || ["İhtiyaca göre ölçü", "Planlı üretim", "Kullanım amacına uygun form"];
+  const features = catalog?.features || ["İhtiyaca göre ölçü", "Planlı üretim", "Kullanım amacına uygun yapı"];
   const advantages = catalog?.advantages || ["Pratik kullanım", "Düzenli istifleme", "Kurumsal sevkiyat uyumu"];
   const related: CardProduct[] = allManaged.filter((item) => item.slug !== slug).slice(0, 3).map((item) => ({ slug: item.slug, title: item.name, description: item.shortDescription, category: item.category, image: item.imageUrl || fallbackImages[item.slug] || "/media/products/standard-box.png" }));
 

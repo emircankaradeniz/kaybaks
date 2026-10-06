@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
+import "./kaybaks-v2.css";
 
 const manrope = Manrope({ subsets: ["latin-ext"], variable: "--font-manrope", display: "swap" });
 

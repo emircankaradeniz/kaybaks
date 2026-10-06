@@ -12,7 +12,7 @@ const fallbackImages: Record<string, string> = {
 
 const guide = [
   [Box, "İhtiyacınızı belirleyin", "Ürününüzü ve kullanım amacını bize anlatın."],
-  [ClipboardCheck, "Uygun çözümü önerelim", "Sektör deneyimimizle doğru formu belirleyelim."],
+  [ClipboardCheck, "Uygun çözümü önerelim", "Sektör deneyimimizle doğru yapıyı belirleyelim."],
   [PackageCheck, "Numune ile test edin", "İhtiyacınıza göre numune çalışması planlayalım."],
   [Factory, "Üretime geçelim", "Onay sonrası planlanan süreçlerle üretelim."],
 ] as const;
@@ -22,7 +22,7 @@ export default async function ProductsPage() {
   const products: CardProduct[] = managed.map((product) => ({ slug: product.slug, title: product.name, description: product.shortDescription, category: product.category, image: product.imageUrl || fallbackImages[product.slug] || "/media/products/standard-box.png" }));
   const sculpture = products.slice(0, 5);
   return <>
-    <section className="kp-catalog-hero kp-paper-grid"><div className="kp-container kp-catalog-hero-grid"><div><Kicker>Ürünlerimiz</Kicker><h1>Ürününüz için<br /><span>doğru formu keşfedin.</span></h1><p>Farklı sektörlerin ihtiyaçlarına uygun oluklu mukavva, kutu ve özel tasarım ambalaj çözümleri.</p></div><div className="kp-product-sculpture">{sculpture.map((product, index) => <KraftImage key={product.slug} className={`kp-sculpture-${index + 1}`} src={product.image} alt={product.title} />)}</div></div></section>
+    <section className="kp-catalog-hero kp-paper-grid"><div className="kp-container kp-catalog-hero-grid"><div><Kicker>Ürünlerimiz</Kicker><h1>Yükünüzün yoluna<br /><span>uygun ambalaj.</span></h1><p>Farklı sektörlerin ihtiyaçlarına uygun oluklu mukavva, kutu ve özel tasarım ambalaj çözümleri.</p></div><div className="kp-product-sculpture">{sculpture.map((product, index) => <KraftImage key={product.slug} className={`kp-sculpture-${index + 1}`} src={product.image} alt={product.title} />)}</div></div></section>
     <section className="kp-section"><div className="kp-container"><KraftProductFilter products={products} /></div></section>
     <section className="kp-dark-section"><div className="kp-container kp-guide-layout"><div><Kicker light>Doğru ürünü seçin</Kicker><h2>İhtiyacınıza uygun çözümü birlikte bulalım.</h2><p>Ürününüzü, sektörünüzü ve lojistik koşullarınızı anlayarak en uygun ambalajı belirleyelim.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Teklif Al<ArrowRight size={17} /></Link></div><div className="kp-guide-steps">{guide.map(([Icon, title, text], index) => <article key={title}><span>{index + 1}</span><Icon /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
     <QuoteBand />

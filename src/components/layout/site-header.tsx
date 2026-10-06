@@ -36,6 +36,7 @@ export function SiteHeader() {
             return <Link key={link.href} href={link.href} className={active ? "active" : ""}>{link.label}</Link>;
           })}
         </nav>
+        <span className="kp-header-index" aria-hidden="true"><b>38°43′N</b><small>KAYSERİ / TR</small></span>
         <Link href="/iletisim#teklif" className="kp-button kp-button-yellow kp-header-cta">Teklif Al <ArrowUpRight size={16} /></Link>
         <button className="kp-menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label={open ? "Menüyü kapat" : "Menüyü aç"}>{open ? <X /> : <Menu />}</button>
       </div>

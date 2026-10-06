@@ -11,7 +11,7 @@ const flow = [
   [Box, "Ürün özelliği", "Ürününüzün boyutu, ağırlığı ve hassasiyeti."],
   [Settings, "Kullanım koşulu", "Depolama, taşıma ve ortam koşulları."],
   [Truck, "Sevkiyat şekli", "Tekli, çoklu veya paletli sevkiyat."],
-  [PackageCheck, "Uygun çözüm", "Doğru ambalaj formu ve malzeme yapısı."],
+  [PackageCheck, "Uygun çözüm", "Doğru ambalaj yapısı ve malzeme düzeni."],
 ] as const;
 
 export default function SectorsPage() {
