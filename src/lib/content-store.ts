@@ -39,14 +39,14 @@ export const adminPassword = process.env.ADMIN_PASSWORD ?? "";
 export const adminSessionSecret = process.env.ADMIN_SESSION_SECRET ?? "";
 
 const defaultProductRows = [
-  ["oluklu-mukavva-levha", "Oluklu Mukavva Levha", "Levha & Mukavva", "Farklı kalınlık ve dalga tiplerinde mukavva levha çözümleri.", "/media/products/corrugated-sheet.png", 67, 728],
-  ["normal-kutu", "Normal Kutu", "Kutu Çözümleri", "Standart ölçülerde dayanıklı ve ekonomik kutular.", "/media/products/standard-box.png", 269, 728],
-  ["kalip-kesim-kutu", "Kalıp Kesim Kutu", "Kutu Çözümleri", "Özel kesim, baskılı ve kreatif kutu çözümleri.", "/media/products/die-cut-box.png", 472, 728],
-  ["teleskopik-kutu", "Teleskopik Kutu", "Kutu Çözümleri", "İç içe geçen yapısıyla ekstra koruma sağlar.", "/media/products/telescope-box.png", 675, 728],
-  ["ondule", "Ondüle", "Koruyucu Ürünler", "Esnek ve koruyucu ondüle malzeme çözümleri.", "/media/products/ondule-products.png", 67, 984],
-  ["demonte-mobilya-kutulari", "Demonte Mobilya Kutuları", "Demonte & Mobilya", "Mobilya ve parçalar için özel ölçü ve dayanıklılık.", "/media/products/furniture-box.png", 338, 984],
-  ["ozel-olcu-kutu", "Özel Ölçü Kutu", "Özel Formlar", "Standart dışı ürünler için ölçüye göre planlanan kutu çözümleri.", "/media/products/custom-size-box.png", 472, 984],
-  ["ozel-tasarim-ambalaj", "Özel Tasarım Ambalaj", "Özel Tasarım", "Markanıza özel tasarım ambalaj çözümleri.", "/media/products/premium-packaging.png", 629, 984],
+  ["oluklu-mukavva-levha", "Oluklu Mukavva Levha", "Levha & Ondüle", "Farklı dalga, katman ve gramaj seçeneklerinde oluklu mukavva levhalar.", "/media/supplied/corrugated-layers.png", 50, 50],
+  ["normal-kutu", "Normal Kutu", "Kutu Çözümleri", "Taşıma, depolama ve lojistik için farklı ölçülerde standart kutular.", "/media/supplied/normal-box-and-sheets.png", 50, 50],
+  ["kalip-kesim-kutu", "Kalıp Kesim Kutu", "Kutu Çözümleri", "Ürüne göre kesilen, tam renk klişe baskıya uygun kutu çözümleri.", "/media/supplied/handled-diecut-box.png", 50, 50],
+  ["teleskopik-kutu", "Teleskopik Kutu", "Kutu Çözümleri", "Kapak ve gövdeden oluşan, koruma ihtiyacı yüksek ürünlere uygun kutular.", "/media/supplied/box-types.png", 50, 50],
+  ["ondule", "Ondüle", "Levha & Ondüle", "Sırtı açık, tek dalga, çift dalga ve üç dalga seçenekleri.", "/media/supplied/flute-types.png", 50, 50],
+  ["demonte-mobilya-kutulari", "Demonte Mobilya Kutuları", "Mobilya", "Mobilya parçalarının düzenli ve güvenli sevkiyatı için ölçülü ambalajlar.", "/media/supplied/box-size-variety.png", 50, 50],
+  ["ozel-olcu-kutu", "Özel Ölçü Kutu", "Özel Üretim", "Standart dışı ürünler için ölçü, gramaj ve kullanıma göre planlanan kutular.", "/media/supplied/box-types.png", 50, 50],
+  ["ozel-tasarim-ambalaj", "Özel Tasarım Ambalaj", "Özel Üretim", "Kalıp kesim ve tam renk klişe baskı seçenekli özel ambalajlar.", "/media/supplied/diecut-folding-example.png", 50, 50],
 ] as const;
 
 export const defaultSettings: SiteSettings = {
@@ -54,15 +54,15 @@ export const defaultSettings: SiteSettings = {
   phone: "+90 352 322 28 01",
   phone_href: "+903523222801",
   email: "info@kaybaks.com.tr",
-  address: "Karpuzsekisi Mah. 22. Sk. No:22, 38070 Melikgazi / Kayseri",
-  hero_eyebrow: "Kayseri’den Türkiye’ye, Dünyaya",
-  hero_title: "Yeni Nesil Oluklu Mukavva ve Ambalaj Çözümleri",
-  hero_description: "Kayseri’deki modern tesisimizde, ihtiyacınıza özel oluklu mukavva ve kutu üretimi yapıyoruz.",
+  address: "1. Organize Sanayi Bölgesi, Karpuzsekisi Mah. 22. Cadde No:22, Melikgazi / Kayseri",
+  hero_eyebrow: "1999’dan beri üretimde",
+  hero_title: "Oluklu Mukavva ve Kutu Üretimi",
+  hero_description: "KAYBAKS markasıyla 2010’dan beri ürününüze uygun oluklu mukavva, kutu ve özel ambalaj çözümleri üretiyoruz.",
   hero_image: "",
   customer_count: "500+",
-  experience_years: "35+",
-  production_area: "10.000 m²",
-  project_count: "724+",
+  experience_years: "1999’dan beri",
+  production_area: "Kayseri",
+  project_count: "2010’dan beri KAYBAKS",
 };
 
 function createDefaultProducts(): ManagedProduct[] {

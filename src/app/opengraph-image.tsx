@@ -16,7 +16,7 @@ export default function OpenGraphImage() {
           height: "100%",
           width: "100%",
           background:
-            "linear-gradient(135deg, rgba(244,191,24,0.18), rgba(0,0,0,0) 40%), linear-gradient(180deg, #101010 0%, #050505 100%)",
+            "linear-gradient(135deg, rgba(255,184,0,0.24), rgba(0,0,0,0) 40%), linear-gradient(180deg, #202020 0%, #111111 100%)",
           color: "white",
           padding: "64px",
           fontFamily: "sans-serif",
@@ -40,10 +40,10 @@ export default function OpenGraphImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ fontSize: 84, fontWeight: 700, lineHeight: 1, textTransform: "uppercase" }}>
-              Ürünün Yoluna Göre Ambalaj
+              Oluklu Mukavva &amp; Kutu
             </div>
             <div style={{ fontSize: 28, color: "rgba(255,255,255,0.76)" }}>
-              Kayseri merkezli oluklu mukavva, karton kutu ve özel ambalaj çözümleri
+              1999’dan beri üretimde · 2010’dan beri KAYBAKS markasıyla
             </div>
           </div>
         </div>

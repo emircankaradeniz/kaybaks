@@ -1,49 +1,108 @@
 import Link from "next/link";
-import { ArrowRight, Box, Boxes, ClipboardCheck, Factory, PackageCheck, Ruler, ShoppingCart, Sofa, Store, Truck } from "lucide-react";
+import { ArrowRight, Box, Factory, PackageCheck, Palette, Truck } from "lucide-react";
 import { getProducts } from "@/lib/content-store";
-import { KraftImage, Kicker, ProductCard, QuoteBand, SectionTitle, type CardProduct } from "@/components/ui/kraft";
+import { KraftImage, QuoteBand, type CardProduct } from "@/components/ui/kraft";
 
 export const dynamic = "force-dynamic";
 
 const fallbackImages: Record<string, string> = {
-  "oluklu-mukavva-levha": "/media/products/corrugated-sheet.png", "normal-kutu": "/media/products/standard-box.png", "teleskopik-kutu": "/media/products/telescope-box.png", "kalip-kesim-kutu": "/media/products/die-cut-box.png", ondule: "/media/products/ondule-products.png", "demonte-mobilya-kutulari": "/media/products/furniture-box.png", "ozel-olcu-kutu": "/media/products/custom-size-box.png", "ozel-tasarim-ambalaj": "/media/products/premium-packaging.png",
+  "oluklu-mukavva-levha": "/media/supplied/corrugated-layers.png",
+  "normal-kutu": "/media/supplied/normal-box-and-sheets.png",
+  "teleskopik-kutu": "/media/supplied/box-types.png",
+  "kalip-kesim-kutu": "/media/supplied/handled-diecut-box.png",
+  ondule: "/media/supplied/flute-types.png",
+  "demonte-mobilya-kutulari": "/media/supplied/box-size-variety.png",
+  "ozel-olcu-kutu": "/media/supplied/box-types.png",
+  "ozel-tasarim-ambalaj": "/media/supplied/diecut-folding-example.png",
 };
 
-const process = [
-  [Ruler, "01", "İhtiyacı Dinliyoruz", "Ürününüzü ve hedeflerinizi birlikte netleştiriyoruz."],
-  [Box, "02", "Tasarım & Numune", "Doğru yapıyı, ölçüyü ve malzeme düzenini belirliyoruz."],
-  [Factory, "03", "Üretim", "Planlanan özelliklerde kontrollü üretim yapıyoruz."],
-  [ClipboardCheck, "04", "Kalite Kontrol", "Ölçü, birleşim ve üretim uygunluğunu kontrol ediyoruz."],
-  [Truck, "05", "Teslimat", "Ürünleri teslimat planına göre sevk ediyoruz."],
-] as const;
-
-const sectors = [
-  [ShoppingCart, "E-Ticaret", "/media/products/custom-size-box.png"],
-  [Sofa, "Mobilya", "/media/products/furniture-box.png"],
-  [Boxes, "Sanayi Ürünleri", "/media/products/die-cut-box.png"],
-  [PackageCheck, "Gıda ve Tarım", "/media/products/telescope-box.png"],
-  [Store, "Perakende", "/media/products/premium-packaging.png"],
-] as const;
-
 export default async function HomePage() {
-  const managedProducts = await getProducts();
-  const products: CardProduct[] = managedProducts.map((product) => ({ slug: product.slug, title: product.name, description: product.shortDescription, category: product.category, image: product.imageUrl || fallbackImages[product.slug] || "/media/products/standard-box.png" }));
+  const managed = await getProducts();
+  const products: CardProduct[] = managed.map((product) => ({
+    slug: product.slug,
+    title: product.name,
+    description: product.shortDescription,
+    category: product.category,
+    image: fallbackImages[product.slug] || product.imageUrl || "/media/supplied/normal-box-and-sheets.png",
+  }));
+
   return <>
-    <section className="kp-home-hero kp-paper-grid kb-home-hero">
-      <div className="kp-container kp-home-hero-grid">
-        <div className="kp-home-copy"><Kicker>Oluklu mukavva · Kayseri</Kicker><h1>Kutunun dışını değil, <span>içindekini koruyoruz.</span></h1><p>Ölçüden malzemeye, üretimden sevkiyata kadar ambalajı tek bir üretim planı olarak ele alıyoruz.</p><div className="kp-actions"><Link className="kp-button kp-button-yellow" href="/urunler">Ürünleri İncele<ArrowRight size={17} /></Link><Link className="kp-button kp-button-outline" href="/iletisim#teklif">Projenizi Anlatın<ArrowRight size={17} /></Link></div><div className="kp-hero-points"><span><b>01</b><Ruler />Ölçüyü belirle</span><span><b>02</b><Boxes />Yapıyı seç</span><span><b>03</b><PackageCheck />Güvenle sevk et</span></div></div>
-        <div className="kp-hero-product" aria-label="Oluklu mukavva ürün görseli"><div className="kb-stage-code"><span>KYS / AMB</span><b>01—38</b></div><KraftImage className="kp-hero-sheets" src="/media/products/hero-sheets-cutout.png" alt="Katmanlı oluklu mukavva levhalar" width={1390} height={615} priority /><KraftImage className="kp-hero-box" src="/media/products/hero-box-branded.png" alt="KAYBAKS oluklu mukavva kutu" width={1403} height={1121} priority /><div className="kp-tech-note kp-tech-note-a"><span />Taşıma yüküne göre<br />katman seçimi</div><div className="kp-tech-note kp-tech-note-b"><span />Ürüne göre<br />net ölçülendirme</div><div className="kb-fold-mark" aria-hidden="true">KATLAMA EKSENİ</div></div>
+    <section className="kb3-hero">
+      <div className="kp-container kb3-hero-grid">
+        <div className="kb3-hero-copy">
+          <p className="kb3-eyebrow">KAYSERİ · OLUKLU MUKAVVA &amp; KUTU</p>
+          <h1>Ürününüzü koruyan ambalajı <span>birlikte üretiyoruz.</span></h1>
+          <p className="kb3-lead">Oluklu mukavva levhadan özel ölçü kutuya, kalıp kesimden tam renk klişe baskıya kadar ihtiyacınıza uygun üretim.</p>
+          <div className="kp-actions">
+            <Link className="kp-button kp-button-yellow" href="/urunler">Ürünleri İnceleyin<ArrowRight size={17} /></Link>
+            <Link className="kp-button kp-button-outline" href="/iletisim#teklif">Teklif İsteyin<ArrowRight size={17} /></Link>
+          </div>
+          <dl className="kb3-history-facts">
+            <div><dt>1999</dt><dd>Üretime başlangıç</dd></div>
+            <div><dt>2010</dt><dd>KAYBAKS markası</dd></div>
+            <div><dt>Kayseri</dt><dd>Kendi filomuzla şehir içi sevkiyat</dd></div>
+          </dl>
+        </div>
+        <div className="kb3-hero-product">
+          <span className="kb3-figure-label">NORMAL KUTU + OLUKLU MUKAVVA LEVHA</span>
+          <KraftImage src="/media/supplied/normal-box-and-sheets.png" alt="KAYBAKS normal kutu ve oluklu mukavva levha ürünü" width={447} height={447} priority />
+          <div className="kb3-spec"><span>Ölçü</span><b>Ürüne göre</b><span>Gramaj</span><b>İhtiyaca göre</b></div>
+        </div>
       </div>
-      <div className="kb-material-strip" aria-hidden="true"><span>LEVHA</span><span>NORMAL KUTU</span><span>KALIP KESİM</span><span>ÖZEL ÖLÇÜ</span><span>ONDÜLE</span></div>
     </section>
 
-    <section className="kp-section kb-product-index"><div className="kp-container"><SectionTitle kicker="Ürün indeksi / 01" title="Her yük için başka bir yapı." description="Hazır kalıba ürün uydurmak yerine; ürünün ölçüsüne, ağırlığına ve yolculuğuna uygun ambalajı kuruyoruz." action={{ href: "/urunler", label: "Ürün arşivini aç" }} /><div className="kp-product-grid kp-product-grid-home">{products.slice(0, 4).map((product) => <ProductCard key={product.slug} product={product} />)}</div></div></section>
+    <section className="kb3-capabilities" aria-label="KAYBAKS üretim kabiliyetleri">
+      <div className="kp-container">
+        <span><Box />Normal ve teleskopik kutu</span>
+        <span><PackageCheck />Kalıp kesim ve özel ölçü</span>
+        <span><Palette />Tam renk klişe baskı</span>
+        <span><Truck />Planlı sevkiyat</span>
+      </div>
+    </section>
 
-    <section className="kp-dark-section kb-process-section"><div className="kp-container kp-process-layout"><div><Kicker light>Üretim akışı / 02</Kicker><h2>Önce sorarız.<br />Sonra üretiriz.</h2><p className="kb-process-lead">İyi ambalaj, makinede değil doğru soruyla başlar. Her işi aynı üretim disipliniyle görünür adımlara ayırıyoruz.</p></div><div className="kp-process-grid">{process.map(([Icon, number, title, text]) => <article className="kp-process-step" key={number}><span className="kp-process-number">{number}</span><Icon /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+    <section className="kp-section kb3-products">
+      <div className="kp-container">
+        <header className="kb3-section-head"><div><small>ÜRÜNLER / 01</small><h2>Üretimimizde olan ambalajlar</h2></div><p>Standart koliden ürüne özel kalıp kesim kutuya kadar farklı ölçü ve gramajlarda üretim yapıyoruz.</p><Link href="/urunler">Tüm ürünler <ArrowRight size={17} /></Link></header>
+        <div className="kb3-product-grid">
+          {products.slice(0, 6).map((product, index) => <Link className="kb3-product" href={`/urunler/${product.slug}`} key={product.slug}>
+            <span className="kb3-product-no">0{index + 1}</span>
+            <div className="kb3-product-media"><KraftImage src={product.image} alt={product.title} /></div>
+            <div><small>{product.category}</small><h3>{product.title}</h3><p>{product.description}</p><b>Detayları görün <ArrowRight size={15} /></b></div>
+          </Link>)}
+        </div>
+      </div>
+    </section>
 
-    <section className="kp-section kp-paper-grid kb-sector-index"><div className="kp-container"><SectionTitle kicker="Kullanım alanları / 03" title="Sektör değil, koşul belirler." description="İstif yüksekliği, nem, taşıma biçimi ve ürün hassasiyeti… Ambalaj kararını gerçek kullanım koşullarıyla veriyoruz." action={{ href: "/sektorel-cozumler", label: "Çözüm alanları" }} /><div className="kp-sector-row">{sectors.map(([Icon, title, image]) => <Link className="kp-sector-tile" href="/sektorel-cozumler" key={title}><KraftImage src={image} alt={`${title} ambalaj çözümü`} /><span><Icon size={19} />{title}<ArrowRight size={15} /></span></Link>)}</div></div></section>
+    <section className="kp-section kb3-factory">
+      <div className="kp-container">
+        <header className="kb3-section-head kb3-section-head-light"><div><small>FABRİKA / 02</small><h2>Gerçek üretim, gerçek tesis</h2></div><p>KAYBAKS, 1. Organize Sanayi Bölgesi’ndeki tesisinde üretim ve sevkiyat süreçlerini birlikte yönetir.</p></header>
+        <div className="kb3-factory-grid">
+          <figure><KraftImage src="/media/supplied/kaybaks-factory.png" alt="KAYBAKS 1. Organize Sanayi Bölgesi üretim tesisi" width={1206} height={907} /><figcaption>1. Organize Sanayi Bölgesi · Melikgazi / Kayseri</figcaption></figure>
+          <div className="kb3-factory-copy">
+            <Factory />
+            <h3>1999’dan gelen üretim deneyimi</h3>
+            <p>Şirketimiz oluklu mukavva üretimine 1999 yılında başladı; 2010’dan bu yana KAYBAKS markasıyla faaliyet gösteriyor.</p>
+            <p>Mobilya, gıda, tekstil, beyaz eşya, çelik eşya, kimya ve birçok farklı sektör için zamanında ve kaliteli üretime odaklanıyoruz.</p>
+            <Link className="kp-button kp-button-yellow" href="/kurumsal">KAYBAKS’ı Tanıyın<ArrowRight size={17} /></Link>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section className="kp-factory-band"><div className="kp-container kp-factory-layout"><div className="kp-factory-copy"><Kicker>Fabrika notları / 04</Kicker><h2>Üretim sahası konuşur.</h2><p>Gerçek üretim görüntüleri, gerçek süreçler ve ölçülebilir kontrol noktaları. Gösterişli vaatler yerine düzenli üretim sunuyoruz.</p><Link className="kp-button kp-button-yellow" href="/uretim-kalite">Süreci Görün<ArrowRight size={17} /></Link></div><div className="kp-factory-images"><KraftImage src="/media/kaybaks-video-2.png" alt="KAYBAKS oluklu mukavva üretim hattı" /><KraftImage src="/media/kaybaks-video-3-hd.jpg" alt="KAYBAKS üretim makinesi" width={1920} height={1440} /><KraftImage src="/media/kaybaks-video-4.png" alt="Üretim alanında oluklu mukavva" /></div></div></section>
-    <QuoteBand title="Kutuyu değil, ihtiyacı tarif ederek başlayın." />
+    <section className="kp-section kb3-print">
+      <div className="kp-container kb3-print-grid">
+        <div className="kb3-print-copy"><small>BASKI &amp; KALIP / 03</small><h2>Klişe ve tam renk baskı</h2><p>Ambalajı yalnızca koruyucu değil, markanızı taşıyan bir yüzey olarak da ele alıyoruz. Kutu tasarımı, kalıp kesimi ve tam renk klişe baskı ihtiyaca göre birlikte planlanır.</p><div className="kb3-cmyk" aria-label="Tam renk baskı"><i>C</i><i>M</i><i>Y</i><i>K</i></div><Link className="kp-button kp-button-outline" href="/iletisim#teklif">Baskılı kutu için teklif alın<ArrowRight size={17} /></Link></div>
+        <div className="kb3-print-visual"><KraftImage src="/media/supplied/handled-diecut-box.png" alt="Kalıp kesim taşıma kutusu" width={505} height={396} /><span>Kalıp kesim · Klişe · Tam renk</span></div>
+      </div>
+    </section>
+
+    <section className="kp-section kb3-technical">
+      <div className="kp-container">
+        <header className="kb3-section-head"><div><small>TEKNİK BİLGİ / 04</small><h2>Dalga ve katman seçenekleri</h2></div><p>Ürünün ağırlığı, istifleme koşulları ve sevkiyat biçimine göre uygun oluk ve katman yapısı belirlenir.</p><Link href="/uretim-kalite">Teknik bilgileri inceleyin <ArrowRight size={17} /></Link></header>
+        <div className="kb3-technical-grid"><figure><KraftImage src="/media/supplied/corrugated-layers.png" alt="Sırtı açık, tek dalga, çift dalga ve üç dalga oluklu mukavva yapıları" width={539} height={568} /><figcaption>Katman yapıları</figcaption></figure><figure><KraftImage src="/media/supplied/flute-types.png" alt="F, E, B ve C dalga oluklu mukavva seçenekleri" width={374} height={534} /><figcaption>Dalga seçenekleri</figcaption></figure></div>
+      </div>
+    </section>
+
+    <QuoteBand title="Ölçünüzü, kullanım alanını ve adedi paylaşın; üretimi birlikte planlayalım." />
   </>;
 }

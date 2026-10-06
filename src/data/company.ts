@@ -16,12 +16,12 @@ export const company = {
   email: "info@kaybaks.com.tr",
   phone: "+90 352 322 28 01",
   phoneHref: "+903523222801",
-  addressLine: "1. Organize Sanayi Bölgesi 22. Cadde No: 22",
-  locality: "Kayseri",
+  addressLine: "Karpuzsekisi Mah. 22. Cadde No: 22, 1. Organize Sanayi Bölgesi",
+  locality: "Melikgazi",
   region: "Kayseri",
   postalCode: "38070",
   country: "TR",
-  mapQuery: "KAYBAKS Oluklu Mukavva 1. Organize Sanayi Bölgesi 22. Cadde No: 22 Kayseri",
+  mapQuery: "KAYBAKS Oluklu Mukavva Karpuzsekisi Mahallesi 22. Cadde No 22 Melikgazi Kayseri",
   hours: [
     "Hafta içi 08:30 - 18:00",
     "Cumartesi 08:30 - 13:00",
@@ -137,24 +137,24 @@ export const whyKaybaks = [
 
 export const galleryItems = [
   {
-    src: "/media/kaybaks-video-1.png",
-    alt: "KAYBAKS üretim sahasında çalışan ve kesilmiş kutu parçalarını yöneten operatör",
-    title: "Şekillendirme ve Hazırlık",
+    src: "/media/supplied/kaybaks-factory.png",
+    alt: "KAYBAKS Kayseri üretim tesisi",
+    title: "Kayseri Üretim Tesisi",
   },
   {
-    src: "/media/kaybaks-video-2.png",
-    alt: "Oluklu mukavva levhanın makine üzerinde işlendiği KAYBAKS üretim hattı",
-    title: "Levhadan Üretime",
+    src: "/media/supplied/normal-box-and-sheets.png",
+    alt: "Normal kutu ve oluklu mukavva levhalar",
+    title: "Normal Kutu ve Levha",
   },
   {
-    src: "/media/kaybaks-video-4.png",
-    alt: "KAYBAKS üretim alanında istiflenen kutuların hatta aktarılması",
-    title: "Hat Sonu Operasyonu",
+    src: "/media/supplied/handled-diecut-box.png",
+    alt: "Kalıp kesim taşıma kutusu",
+    title: "Kalıp Kesim Kutu",
   },
   {
-    src: "/media/kaybaks-video-5.png",
-    alt: "KAYBAKS ile ilişkili arşiv görselinden ürün ve yönetim kolajı",
-    title: "Arşiv Görseli",
+    src: "/media/supplied/corrugated-layers.png",
+    alt: "Oluklu mukavva katman yapıları",
+    title: "Katman Seçenekleri",
   },
 ];
 

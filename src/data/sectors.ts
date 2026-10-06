@@ -6,52 +6,12 @@ export type Sector = {
 };
 
 export const sectors: Sector[] = [
-  {
-    slug: "mobilya",
-    name: "Mobilya",
-    description: "Demonte parçalar, yüzey koruması ve düzenli sevkiyat ihtiyacı için kutu ve levha çözümleri.",
-    suitableProducts: ["Demonte Mobilya Kutuları", "Oluklu Mukavva Levha", "Özel Ölçü Kutu"],
-  },
-  {
-    slug: "gida",
-    name: "Gıda",
-    description: "Düzenli istifleme ve sevkiyat akışında kullanılabilecek kutu ve destekleyici ambalaj yapıları.",
-    suitableProducts: ["Normal Kutu", "Kalıp Kesim Kutu", "Ondüle Ürünler"],
-  },
-  {
-    slug: "e-ticaret",
-    name: "E-Ticaret",
-    description: "Farklı ürün gruplarını düzenli paketlemeye ve sevkiyat sırasında korumaya yardımcı kutu kurguları.",
-    suitableProducts: ["Normal Kutu", "Özel Ölçü Kutu", "Özel Tasarım Ambalaj"],
-  },
-  {
-    slug: "sanayi",
-    name: "Sanayi",
-    description: "Parça, ekipman ve farklı boyutlardaki ürünlerin depolama ve taşınmasına uyarlanabilen kutu tipleri.",
-    suitableProducts: ["Oluklu Mukavva Levha", "Normal Kutu", "Özel Ölçü Kutu"],
-  },
-  {
-    slug: "otomotiv-yan-sanayi",
-    name: "Otomotiv Yan Sanayi",
-    description: "Parça bazlı koruma, düzenli ayırma ve seri sevkiyat ihtiyaçları için planlanabilen ambalaj altyapısı.",
-    suitableProducts: ["Kalıp Kesim Kutu", "Ondüle Ürünler", "Özel Tasarım Ambalaj"],
-  },
-  {
-    slug: "tekstil",
-    name: "Tekstil",
-    description: "Toplu paketleme, düzenli taşıma ve ürün formuna göre farklı kutu seçenekleri.",
-    suitableProducts: ["Normal Kutu", "Teleskopik Kutu", "Özel Ölçü Kutu"],
-  },
-  {
-    slug: "lojistik",
-    name: "Lojistik",
-    description: "Depolama, istifleme ve taşıma süreçlerine uygun çok amaçlı kutu ve levha kullanımı.",
-    suitableProducts: ["Oluklu Mukavva Levha", "Normal Kutu", "Ondüle Ürünler"],
-  },
-  {
-    slug: "perakende",
-    name: "Perakende",
-    description: "Raf, sunum ve sevkiyat akışını birlikte düşünmeye uygun ambalaj form alternatifleri.",
-    suitableProducts: ["Kalıp Kesim Kutu", "Özel Tasarım Ambalaj", "Teleskopik Kutu"],
-  },
+  { slug: "mobilya", name: "Mobilya", description: "Demonte panel ve parçaların düzenli istiflenmesi ve sevkiyatı için ölçüye göre ambalaj.", suitableProducts: ["Demonte Mobilya Kutuları", "Oluklu Mukavva Levha", "Özel Ölçü Kutu"] },
+  { slug: "gida", name: "Gıda", description: "İstifleme ve dağıtım süreçlerine uygun normal, kalıp kesim ve destekleyici ambalajlar.", suitableProducts: ["Normal Kutu", "Kalıp Kesim Kutu", "Ondüle"] },
+  { slug: "tekstil", name: "Tekstil", description: "Toplu paketleme, depolama ve düzenli taşıma için farklı ölçülerde kutu seçenekleri.", suitableProducts: ["Normal Kutu", "Teleskopik Kutu", "Özel Ölçü Kutu"] },
+  { slug: "beyaz-esya", name: "Beyaz Eşya", description: "Hacimli ve hassas ürünlerde koruma, ara bölme ve dış ambalaj ihtiyacına uygun çözümler.", suitableProducts: ["Oluklu Mukavva Levha", "Özel Ölçü Kutu", "Ondüle"] },
+  { slug: "celik-esya", name: "Çelik Eşya", description: "Ağır ve yüzey hassasiyeti bulunan ürünlerde katman ve gramaj ihtiyacına göre ambalaj.", suitableProducts: ["Çift Dalga Levha", "Teleskopik Kutu", "Özel Ölçü Kutu"] },
+  { slug: "kimya", name: "Kimya", description: "Ürün biçimi ve taşıma koşullarına göre planlanan dayanıklı kutu ve seperatör çözümleri.", suitableProducts: ["Normal Kutu", "Kalıp Kesim Kutu", "Ondüle"] },
+  { slug: "sanayi", name: "Sanayi Ürünleri", description: "Parça ve ekipmanların depolama ile sevkiyatına uyarlanan kutu ve levha yapıları.", suitableProducts: ["Oluklu Mukavva Levha", "Normal Kutu", "Özel Ölçü Kutu"] },
+  { slug: "lojistik", name: "Lojistik", description: "Depolama, istifleme ve taşıma akışını destekleyen çok amaçlı ambalaj seçenekleri.", suitableProducts: ["Normal Kutu", "Teleskopik Kutu", "Ondüle"] },
 ];

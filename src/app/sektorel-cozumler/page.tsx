@@ -1,28 +1,26 @@
 import Link from "next/link";
-import { ArrowRight, Box, ClipboardCheck, PackageCheck, Settings, Truck } from "lucide-react";
+import { ArrowRight, Box, Ruler, Scale, Truck } from "lucide-react";
 import { sectors } from "@/data/sectors";
-import { KraftImage, Kicker, QuoteBand } from "@/components/ui/kraft";
+import { KraftImage, QuoteBand } from "@/components/ui/kraft";
 
-const sectorImages = [
-  "/media/products/furniture-box.png", "/media/products/die-cut-box.png", "/media/products/custom-size-box.png", "/media/products/corrugated-sheet.png", "/media/products/ondule-products.png", "/media/products/telescope-box.png", "/media/products/standard-box.png", "/media/products/premium-packaging.png",
+const images = [
+  "/media/supplied/box-size-variety.png",
+  "/media/supplied/handled-diecut-box.png",
+  "/media/supplied/box-types.png",
+  "/media/supplied/corrugated-layers.png",
+  "/media/supplied/normal-box-and-sheets.png",
+  "/media/supplied/flute-types.png",
+  "/media/supplied/box-types.png",
+  "/media/supplied/normal-box-and-sheets.png",
 ];
-
-const flow = [
-  [Box, "Ürün özelliği", "Ürününüzün boyutu, ağırlığı ve hassasiyeti."],
-  [Settings, "Kullanım koşulu", "Depolama, taşıma ve ortam koşulları."],
-  [Truck, "Sevkiyat şekli", "Tekli, çoklu veya paletli sevkiyat."],
-  [PackageCheck, "Uygun çözüm", "Doğru ambalaj yapısı ve malzeme düzeni."],
-] as const;
 
 export default function SectorsPage() {
   return <>
-    <section className="kp-sector-hero kp-paper-grid"><div className="kp-container kp-sector-hero-grid"><div><Kicker>Sektörel Çözümler</Kicker><h1>Her sektör için<br /><span>doğru ambalaj.</span></h1><p>Ürününüzü, sevkiyatınızı ve kullanım koşullarınızı birlikte değerlendiriyoruz.</p></div><div className="kp-sector-collage"><KraftImage src="/media/products/die-cut-box.png" alt="Özel kalıp kesim ambalaj" /><KraftImage src="/media/kaybaks-video-4.png" alt="Üretim ve sevkiyat alanı" /><KraftImage src="/media/products/telescope-box.png" alt="Teleskopik ambalaj kutusu" /></div></div></section>
+    <section className="kb3-page-hero kb3-sector-hero"><div className="kp-container kb3-page-hero-grid"><div><p className="kb3-eyebrow">SEKTÖREL ÇÖZÜMLER</p><h1>Her ürünün taşıma koşulu farklıdır.</h1><p>Ambalajı sektör adına göre değil; ürünün ölçüsü, ağırlığı, hassasiyeti ve teslim biçimine göre planlıyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Sektörünüze özel teklif<ArrowRight size={17} /></Link></div><figure><KraftImage src="/media/supplied/box-size-variety.png" alt="Farklı ölçülerde oluklu mukavva kutular" width={258} height={148} priority /><figcaption>Farklı ölçü · Farklı ürün · Uygun ambalaj</figcaption></figure></div></section>
 
-    <section className="kp-section"><div className="kp-container kp-sector-mosaic">{sectors.map((sector, index) => <article className={`kp-sector-card kp-sector-card-${(index % 3) + 1}`} key={sector.slug}><div className="kp-sector-card-image"><KraftImage src={sectorImages[index]} alt={`${sector.name} sektörüne uygun ambalaj`} /></div><div className="kp-sector-card-copy"><div><Kicker>Sektörel Uyum</Kicker><h2>{sector.name}</h2><p>{sector.description}</p></div><div><strong>Uygun ürünler</strong><div className="kp-tags">{sector.suitableProducts.map((product) => <span key={product}>{product}</span>)}</div></div><Link className="kp-square-link" href="/iletisim#teklif" aria-label={`${sector.name} için teklif al`}><ArrowRight /></Link></div></article>)}</div></section>
+    <section className="kb3-decision"><div className="kp-container"><span><Ruler /><b>Ölçü</b>En, boy ve yükseklik</span><span><Scale /><b>Ağırlık</b>Taşıma ve istif yükü</span><span><Box /><b>Hassasiyet</b>Koruma ve seperatör</span><span><Truck /><b>Sevkiyat</b>Depolama ve teslim biçimi</span></div></section>
 
-    <section className="kp-dark-section"><div className="kp-container kp-sector-guide"><div><Kicker light>Sektör karşılaştırma rehberi</Kicker><h2>Sizin sektörünüz için en uygun çözümü bulun.</h2><p>Ürün özellikleri ve sevkiyat koşulları üzerinden doğru ambalaj yapısını birlikte değerlendiriyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Sektörünüze özel teklif alın<ArrowRight size={17} /></Link></div><div className="kp-sector-flow">{flow.map(([Icon, title, text]) => <article key={title}><Icon /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
-
-    <section className="kp-simple-steps"><div className="kp-container"><Kicker>Nasıl ilerliyoruz?</Kicker><div className="kp-simple-steps-grid"><h2>3 adımda doğru çözüm.</h2><article><span>1</span><ClipboardCheck /><b>İhtiyacı anlatın</b></article><article><span>2</span><Box /><b>Çözümü birlikte belirleyelim</b></article><article><span>3</span><Settings /><b>Üretime geçelim</b></article></div></div></section>
+    <section className="kp-section kb3-sectors"><div className="kp-container"><header className="kb3-section-head"><div><small>SEKTÖRLER / 01</small><h2>Üretim yaptığımız alanlar</h2></div><p>KAYBAKS; mobilyadan gıdaya, tekstilden beyaz eşyaya kadar farklı sektörlerin ambalaj ihtiyaçlarına üretim sağlar.</p></header><div className="kb3-sector-grid">{sectors.map((sector, index) => <article key={sector.slug}><span>0{index + 1}</span><div className="kb3-sector-media"><KraftImage src={images[index]} alt={`${sector.name} için ambalaj çözümleri`} /></div><div><h3>{sector.name}</h3><p>{sector.description}</p><ul>{sector.suitableProducts.map((product) => <li key={product}>{product}</li>)}</ul><Link href="/iletisim#teklif">Teklif isteyin <ArrowRight size={15} /></Link></div></article>)}</div></div></section>
     <QuoteBand />
   </>;
 }

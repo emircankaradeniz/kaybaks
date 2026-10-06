@@ -1,35 +1,26 @@
 import Link from "next/link";
-import { ArrowRight, Box, Boxes, ClipboardCheck, Factory, MessageSquareText, Ruler, ShieldCheck, Truck } from "lucide-react";
-import { KraftImage, Kicker, QuoteBand } from "@/components/ui/kraft";
+import { ArrowRight, ClipboardCheck, Factory, Palette, Ruler, Truck } from "lucide-react";
+import { KraftImage, QuoteBand } from "@/components/ui/kraft";
 
 const steps = [
-  [Ruler, "01", "İhtiyacın Belirlenmesi", "Ürün formu, ölçü ve kullanım senaryosu netleştirilir.", "/media/kaybaks-video-1.png"],
-  [Box, "02", "Tasarım & Ölçülendirme", "Kutu yapısı, kesim ve baskı ihtiyaçları planlanır.", "/media/products/die-cut-box.png"],
-  [Factory, "03", "Üretim", "Oluklu mukavva levha ve kutu üretimi seçilen formata göre işlenir.", "/media/kaybaks-video-2.png"],
-  [ClipboardCheck, "04", "Kalite Kontrol", "Ebat, form ve genel üretim uygunluğu kontrol edilir.", "/media/kaybaks-video-3-hd.jpg"],
-  [Truck, "05", "Sevkiyat", "Hazırlanan ürünler teslimat planına göre sevk edilir.", "/media/kaybaks-video-4.png"],
-] as const;
-
-const quality = [
-  [ShieldCheck, "Ürün Uygunluğu", "Kullanım amacına uygun form ve malzeme yapısı."],
-  [Factory, "Üretim Disiplini", "Planlı, kontrollü ve izlenebilir süreçler."],
-  [Boxes, "Çözüm Esnekliği", "Farklı ürün ve sektörlere uyarlanabilen seçenekler."],
-  [MessageSquareText, "Kurumsal İletişim", "Tekliften teslimata kadar açık ve net iletişim."],
+  [Ruler, "01", "İhtiyacın belirlenmesi", "Ürün ölçüsü, ağırlığı, kullanım alanı ve sevkiyat biçimi alınır."],
+  [ClipboardCheck, "02", "Malzeme planı", "Dalga tipi, katman yapısı ve gramaj ihtiyaca göre belirlenir."],
+  [Palette, "03", "Kalıp ve baskı", "Kalıp kesim ve tam renk klişe baskı gereksinimi projelendirilir."],
+  [Factory, "04", "Üretim", "Onaylanan ölçü ve teknik yapıya göre üretim gerçekleştirilir."],
+  [Truck, "05", "Teslimat", "Ürünler termin planına göre hazırlanır ve sevk edilir."],
 ] as const;
 
 export default function QualityPage() {
   return <>
-    <section className="kp-quality-hero kp-paper-grid"><div className="kp-container kp-quality-hero-grid"><div><Kicker>Üretim & Kalite</Kicker><h1>Her katmanda kontrol,<br /><span>her teslimatta güven.</span></h1><p>Teknik planlama, üretim akışı ve sevkiyat adımlarını sade, görünür ve kontrollü bir süreçte yürütüyoruz.</p></div><div className="kp-natural-frame"><KraftImage src="/media/kaybaks-video-2.png" alt="KAYBAKS oluklu mukavva üretim makinesi" priority /></div></div></section>
+    <section className="kb3-page-hero kb3-quality-hero"><div className="kp-container kb3-page-hero-grid"><div><p className="kb3-eyebrow">ÜRETİM &amp; TEKNİK BİLGİ</p><h1>Doğru katman, doğru ölçü, doğru baskı.</h1><p>Oluklu mukavva ambalajı; ürünün korunması, depolanması, taşınması ve sunulması için birlikte planlıyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Üretim talebi oluşturun<ArrowRight size={17} /></Link></div><figure><KraftImage src="/media/supplied/corrugated-layers.png" alt="Oluklu mukavva katman ve dalga yapıları" width={539} height={568} priority /><figcaption>Sırtı açık · Tek dalga · Çift dalga · Üç dalga</figcaption></figure></div></section>
 
-    <section className="kp-process-section"><div className="kp-container"><div className="kp-process-title"><h2>Üretim sürecimiz</h2><p>Hammadde girişinden sevkiyata kadar tüm aşamalarda planlı bir üretim akışı.</p></div><div className="kp-production-grid">{steps.map(([Icon, number, title, text, image]) => <article key={number}><div className="kp-natural-frame"><KraftImage src={image} alt={`${title} üretim aşaması`} /></div><span>{number}</span><Icon /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+    <section className="kp-section kb3-process"><div className="kp-container"><header className="kb3-section-head"><div><small>ÜRETİM AKIŞI / 01</small><h2>İhtiyaçtan sevkiyata</h2></div><p>Her iş ürün bilgisiyle başlar, onaylanan teknik yapı ve teslim planıyla üretime alınır.</p></header><div className="kb3-process-list">{steps.map(([Icon, no, title, text]) => <article key={no}><b>{no}</b><Icon /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
-    <section className="kp-section"><div className="kp-container kp-material-layout"><div><Kicker>Malzemeyi tanıyoruz</Kicker><h2>Doğru katman,<br />doğru dayanım.</h2><p>Ambalajın performansını belirleyen oluk yapısı, katman düzeni ve ölçü uygunluğunu birlikte değerlendiriyoruz.</p></div><div className="kp-natural-frame"><KraftImage src="/media/products/corrugated-sheet.png" alt="Oluklu mukavva katman yapısı" /></div><div className="kp-material-notes"><article><b>Oluk yapısı</b><p>Ürünün taşıma ve istifleme ihtiyacına göre değerlendirilir.</p></article><article><b>Katman dayanımı</b><p>Kâğıt kalitesi ve katman birleşimi birlikte ele alınır.</p></article><article><b>Ölçü uygunluğu</b><p>Ürüne özel ölçülerle gereksiz boşluk azaltılır.</p></article></div></div></section>
+    <section className="kp-section kb3-wave-guide"><div className="kp-container kb3-wave-grid"><div><p className="kb3-eyebrow">DALGA SEÇENEKLERİ / 02</p><h2>Ürünün yüküne göre yapı</h2><p>F, E, B ve C dalga seçenekleri ile tek ve çift katlı oluklu mukavva kombinasyonları farklı koruma ve istifleme ihtiyaçlarına cevap verir.</p><ul><li>Ürünün ağırlığı ve hassasiyeti</li><li>İstifleme yüksekliği</li><li>Depolama ve nakliye koşulları</li><li>Ambalajın kullanım biçimi</li></ul></div><KraftImage src="/media/supplied/flute-types.png" alt="F E B ve C dalga oluklu mukavva karşılaştırması" width={374} height={534} /></div></section>
 
-    <section className="kp-section kp-paper-grid"><div className="kp-container"><div className="kp-quality-checks-title"><Kicker>Kalite kontrol noktalarımız</Kicker><h2>Her aşamada görünür kontrol.</h2></div><div className="kp-quality-checks">{[["Oluk yapısı","/media/products/ondule-products.png"],["Katman dayanımı","/media/products/corrugated-sheet.png"],["Ölçü uygunluğu","/media/products/custom-size-box.png"],["Form kontrolü","/media/products/die-cut-box.png"]].map(([title,image]) => <article key={title}><KraftImage src={image} alt={title} /><h3>{title}</h3></article>)}</div></div></section>
+    <section className="kp-section kb3-print-detail"><div className="kp-container kb3-print-grid"><div className="kb3-print-copy"><small>BASKI &amp; KALIP / 03</small><h2>Tam renk klişe baskı</h2><p>Ürün bilgileriniz, marka renkleriniz ve kullanım amacınız doğrultusunda baskı ve kalıp kesim detayları üretim öncesinde netleştirilir.</p><div className="kb3-cmyk"><i>C</i><i>M</i><i>Y</i><i>K</i></div><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Baskılı üretim için görüşün<ArrowRight size={17} /></Link></div><div className="kb3-print-visual"><KraftImage src="/media/supplied/diecut-folding-example.png" alt="Kalıp kesim kutunun açık ve katlanmış görünümü" width={148} height={148} /><span>Kalıp kesim · Klişe · Tam renk</span></div></div></section>
 
-    <section className="kp-dark-section"><div className="kp-container kp-quality-values"><div><Kicker light>Güvenilir üretim</Kicker><h2>Sürdürülebilir başarı.</h2><p>Kaliteli hammadde, doğru proses ve kontrollü üretim yaklaşımı.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Üretim için teklif al<ArrowRight size={17} /></Link></div>{quality.map(([Icon,title,text]) => <article key={title}><Icon /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-
-    <section className="kp-section"><div className="kp-container kp-production-gallery"><div><Kicker>Üretimden kareler</Kicker><h2>Üretim alanını yakından görün.</h2></div>{["/media/kaybaks-video-1.png","/media/kaybaks-video-2.png","/media/kaybaks-video-3-hd.jpg","/media/kaybaks-video-4.png"].map((image,index) => <KraftImage key={image} src={image} alt={`KAYBAKS üretim alanı ${index + 1}`} width={index === 2 ? 1920 : 1448} height={index === 2 ? 1440 : 1086} />)}</div></section>
-    <QuoteBand title="Üretim ihtiyacınızı birlikte planlayalım." />
+    <section className="kp-section kb3-material-benefits"><div className="kp-container"><header className="kb3-section-head"><div><small>OLUKLU MUKAVVA / 04</small><h2>Koruma, depolama ve sevkiyat</h2></div><p>Hafif ve dayanıklı yapısı, katlanabilirliği ve farklı ürünlere uyarlanabilmesi oluklu mukavvayı güçlü bir taşıma ambalajı yapar.</p></header><div className="kb3-benefit-grid"><article><h3>Ürünü korur</h3><p>Yüksek enerji emme kapasitesi ve katmanlı yapısıyla taşıma sırasında koruma sağlar.</p></article><article><h3>Az yer kaplar</h3><p>Düz levha halinde depolanabilir, gerektiğinde kutu haline getirilebilir.</p></article><article><h3>İstiflemeyi destekler</h3><p>Nakliye alanının daha verimli kullanılmasına yardımcı olur.</p></article><article><h3>Geri dönüştürülebilir</h3><p>Doğal ve yeniden dönüştürülebilen kâğıt bazlı malzemeden üretilir.</p></article></div></div></section>
+    <QuoteBand title="Teknik ihtiyacınızı paylaşın; uygun dalga, katman ve kutu yapısını birlikte belirleyelim." />
   </>;
 }

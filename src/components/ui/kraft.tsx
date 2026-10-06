@@ -26,9 +26,9 @@ export function CheckList({ items }: { items: string[] }) {
   return <ul className="kp-check-list">{items.map((item) => <li key={item}><span><Check size={14} /></span>{item}</li>)}</ul>;
 }
 
-export function QuoteBand({ title = "Sizin için doğru ambalaj çözümünü birlikte oluşturalım.", product }: { title?: string; product?: string }) {
+export function QuoteBand({ title = "Ürününüz için doğru ambalajı birlikte planlayalım.", product }: { title?: string; product?: string }) {
   const href = product ? `/iletisim?urun=${encodeURIComponent(product)}#teklif` : "/iletisim#teklif";
-  return <section className="kp-quote-band"><div className="kp-container kp-quote-inner"><div><Kicker>Ambalajda güvenli yarınlar</Kicker><h2>{title}</h2></div><div className="kp-quote-actions"><a className="kp-phone-link" href="tel:+903523222801"><Phone size={17} />+90 352 322 28 01</a><Link className="kp-button kp-button-yellow" href={href}>Teklif Al<ArrowUpRight size={17} /></Link></div></div></section>;
+  return <section className="kp-quote-band"><div className="kp-container kp-quote-inner"><div><Kicker>KAYBAKS ile üretime başlayın</Kicker><h2>{title}</h2></div><div className="kp-quote-actions"><a className="kp-phone-link" href="tel:+903523222801"><Phone size={17} />+90 352 322 28 01</a><Link className="kp-button kp-button-yellow" href={href}>Teklif Al<ArrowUpRight size={17} /></Link></div></div></section>;
 }
 
 export function PageIntro({ eyebrow, title, lead, children }: { eyebrow: string; title: string; lead: string; children?: React.ReactNode }) {
