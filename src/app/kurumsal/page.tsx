@@ -9,7 +9,7 @@ export default function CorporatePage() {
     <section className="kb3-page-hero">
       <div className="kp-container kb3-page-hero-grid">
         <div><p className="kb3-eyebrow">KURUMSAL</p><h1>Üretim tecrübesi, hizmet sorumluluğuyla tamamlanır.</h1><p>1999’da başlayan oluklu mukavva üretim deneyimimizi 2010’dan beri KAYBAKS markasıyla sürdürüyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim">Bizimle İletişime Geçin<ArrowRight size={17} /></Link></div>
-        <figure><KraftImage src="/media/enhanced/kaybaks-factory-hd.png" alt="KAYBAKS Kayseri üretim tesisi" width={1446} height={1087} priority /><figcaption>Karpuzsekisi Mahallesi · Melikgazi / Kayseri</figcaption></figure>
+        <figure><KraftImage src="/media/enhanced/kaybaks-factory-hd.jpg" alt="KAYBAKS Kayseri üretim tesisi" width={1446} height={1087} priority /><figcaption>Karpuzsekisi Mahallesi · Melikgazi / Kayseri</figcaption></figure>
       </div>
     </section>
 
@@ -28,7 +28,7 @@ export default function CorporatePage() {
     </section>
 
     <section className="kp-section kb3-sector-proof">
-      <div className="kp-container kb3-sector-proof-grid"><div><p className="kb3-eyebrow">ÇALIŞTIĞIMIZ ALANLAR / 03</p><h2>Farklı sektörlerin farklı ihtiyaçlarına üretim</h2><p>Ambalaj yapısını sektör adından önce ürünün ölçüsü, ağırlığı, hassasiyeti ve sevkiyat koşulları belirler.</p><div className="kb3-sector-list">{sectors.map((sector, index) => <span key={sector}><b>0{index + 1}</b>{sector}</span>)}</div></div><figure><KraftImage src="/media/enhanced/box-types-hd.png" alt="Farklı ölçü ve biçimlerde karton kutu çeşitleri" width={1536} height={1024} /><figcaption>Farklı ölçü ve kullanım biçimleri için kutu seçenekleri</figcaption></figure></div>
+      <div className="kp-container kb3-sector-proof-grid"><div><p className="kb3-eyebrow">ÇALIŞTIĞIMIZ ALANLAR / 03</p><h2>Farklı sektörlerin farklı ihtiyaçlarına üretim</h2><p>Ambalaj yapısını sektör adından önce ürünün ölçüsü, ağırlığı, hassasiyeti ve sevkiyat koşulları belirler.</p><div className="kb3-sector-list">{sectors.map((sector, index) => <span key={sector}><b>0{index + 1}</b>{sector}</span>)}</div></div><figure><KraftImage src="/media/enhanced/box-types-hd.jpg" alt="Farklı ölçü ve biçimlerde karton kutu çeşitleri" width={1536} height={1024} /><figcaption>Farklı ölçü ve kullanım biçimleri için kutu seçenekleri</figcaption></figure></div>
     </section>
     <QuoteBand />
   </>;
