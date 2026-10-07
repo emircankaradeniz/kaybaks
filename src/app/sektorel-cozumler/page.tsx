@@ -4,19 +4,19 @@ import { sectors } from "@/data/sectors";
 import { KraftImage, QuoteBand } from "@/components/ui/kraft";
 
 const images = [
-  "/media/supplied/box-size-variety.png",
-  "/media/supplied/handled-diecut-box.png",
-  "/media/supplied/box-types.png",
-  "/media/supplied/corrugated-layers.png",
-  "/media/supplied/normal-box-and-sheets.png",
-  "/media/supplied/flute-types.png",
-  "/media/supplied/box-types.png",
-  "/media/supplied/normal-box-and-sheets.png",
+  "/media/enhanced/box-size-variety-hd.png",
+  "/media/enhanced/handled-diecut-box-hd.png",
+  "/media/enhanced/box-types-hd.png",
+  "/media/enhanced/corrugated-layers-hd.png",
+  "/media/enhanced/normal-box-and-sheets-hd.png",
+  "/media/enhanced/flute-types-hd.png",
+  "/media/enhanced/box-types-hd.png",
+  "/media/enhanced/normal-box-and-sheets-hd.png",
 ];
 
 export default function SectorsPage() {
   return <>
-    <section className="kb3-page-hero kb3-sector-hero"><div className="kp-container kb3-page-hero-grid"><div><p className="kb3-eyebrow">SEKTÖREL ÇÖZÜMLER</p><h1>Her ürünün taşıma koşulu farklıdır.</h1><p>Ambalajı sektör adına göre değil; ürünün ölçüsü, ağırlığı, hassasiyeti ve teslim biçimine göre planlıyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Sektörünüze özel teklif<ArrowRight size={17} /></Link></div><figure><KraftImage src="/media/supplied/box-size-variety.png" alt="Farklı ölçülerde oluklu mukavva kutular" width={258} height={148} priority /><figcaption>Farklı ölçü · Farklı ürün · Uygun ambalaj</figcaption></figure></div></section>
+    <section className="kb3-page-hero kb3-sector-hero"><div className="kp-container kb3-page-hero-grid"><div><p className="kb3-eyebrow">SEKTÖREL ÇÖZÜMLER</p><h1>Her ürünün taşıma koşulu farklıdır.</h1><p>Ambalajı sektör adına göre değil; ürünün ölçüsü, ağırlığı, hassasiyeti ve teslim biçimine göre planlıyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Sektörünüze özel teklif<ArrowRight size={17} /></Link></div><figure><KraftImage src="/media/enhanced/box-size-variety-hd.png" alt="Farklı ölçülerde oluklu mukavva kutular" width={1656} height={950} priority /><figcaption>Farklı ölçü · Farklı ürün · Uygun ambalaj</figcaption></figure></div></section>
 
     <section className="kb3-decision"><div className="kp-container"><span><Ruler /><b>Ölçü</b>En, boy ve yükseklik</span><span><Scale /><b>Ağırlık</b>Taşıma ve istif yükü</span><span><Box /><b>Hassasiyet</b>Koruma ve seperatör</span><span><Truck /><b>Sevkiyat</b>Depolama ve teslim biçimi</span></div></section>
 

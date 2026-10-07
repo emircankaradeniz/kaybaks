@@ -6,14 +6,14 @@ import { KraftImage, QuoteBand, type CardProduct } from "@/components/ui/kraft";
 export const dynamic = "force-dynamic";
 
 const fallbackImages: Record<string, string> = {
-  "oluklu-mukavva-levha": "/media/supplied/corrugated-layers.png",
-  "normal-kutu": "/media/supplied/normal-box-and-sheets.png",
-  "teleskopik-kutu": "/media/supplied/box-types.png",
-  "kalip-kesim-kutu": "/media/supplied/handled-diecut-box.png",
-  ondule: "/media/supplied/flute-types.png",
-  "demonte-mobilya-kutulari": "/media/supplied/box-size-variety.png",
-  "ozel-olcu-kutu": "/media/supplied/box-types.png",
-  "ozel-tasarim-ambalaj": "/media/supplied/diecut-folding-example.png",
+  "oluklu-mukavva-levha": "/media/enhanced/corrugated-layers-hd.png",
+  "normal-kutu": "/media/enhanced/normal-box-and-sheets-hd.png",
+  "teleskopik-kutu": "/media/enhanced/box-types-hd.png",
+  "kalip-kesim-kutu": "/media/enhanced/handled-diecut-box-hd.png",
+  ondule: "/media/enhanced/flute-types-hd.png",
+  "demonte-mobilya-kutulari": "/media/enhanced/box-size-variety-hd.png",
+  "ozel-olcu-kutu": "/media/enhanced/box-types-hd.png",
+  "ozel-tasarim-ambalaj": "/media/enhanced/diecut-folding-example-hd.png",
 };
 
 export default async function HomePage() {
@@ -23,7 +23,7 @@ export default async function HomePage() {
     title: product.name,
     description: product.shortDescription,
     category: product.category,
-    image: fallbackImages[product.slug] || product.imageUrl || "/media/supplied/normal-box-and-sheets.png",
+    image: fallbackImages[product.slug] || product.imageUrl || "/media/enhanced/normal-box-and-sheets-hd.png",
   }));
 
   return <>
@@ -45,7 +45,7 @@ export default async function HomePage() {
         </div>
         <div className="kb3-hero-product">
           <span className="kb3-figure-label">NORMAL KUTU + OLUKLU MUKAVVA LEVHA</span>
-          <KraftImage src="/media/supplied/normal-box-and-sheets.png" alt="KAYBAKS normal kutu ve oluklu mukavva levha ürünü" width={447} height={447} priority />
+          <KraftImage src="/media/enhanced/normal-box-and-sheets-hd.png" alt="KAYBAKS normal kutu ve oluklu mukavva levha ürünü" width={1254} height={1254} priority />
           <div className="kb3-spec"><span>Ölçü</span><b>Ürüne göre</b><span>Gramaj</span><b>İhtiyaca göre</b></div>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default async function HomePage() {
       <div className="kp-container">
         <header className="kb3-section-head kb3-section-head-light"><div><small>FABRİKA / 02</small><h2>Gerçek üretim, gerçek tesis</h2></div><p>KAYBAKS, 1. Organize Sanayi Bölgesi’ndeki tesisinde üretim ve sevkiyat süreçlerini birlikte yönetir.</p></header>
         <div className="kb3-factory-grid">
-          <figure><KraftImage src="/media/supplied/kaybaks-factory.png" alt="KAYBAKS 1. Organize Sanayi Bölgesi üretim tesisi" width={1206} height={907} /><figcaption>1. Organize Sanayi Bölgesi · Melikgazi / Kayseri</figcaption></figure>
+          <figure><KraftImage src="/media/enhanced/kaybaks-factory-hd.png" alt="KAYBAKS 1. Organize Sanayi Bölgesi üretim tesisi" width={1446} height={1087} /><figcaption>1. Organize Sanayi Bölgesi · Melikgazi / Kayseri</figcaption></figure>
           <div className="kb3-factory-copy">
             <Factory />
             <h3>1999’dan gelen üretim deneyimi</h3>
@@ -92,14 +92,14 @@ export default async function HomePage() {
     <section className="kp-section kb3-print">
       <div className="kp-container kb3-print-grid">
         <div className="kb3-print-copy"><small>BASKI &amp; KALIP / 03</small><h2>Klişe ve tam renk baskı</h2><p>Ambalajı yalnızca koruyucu değil, markanızı taşıyan bir yüzey olarak da ele alıyoruz. Kutu tasarımı, kalıp kesimi ve tam renk klişe baskı ihtiyaca göre birlikte planlanır.</p><div className="kb3-cmyk" aria-label="Tam renk baskı"><i>C</i><i>M</i><i>Y</i><i>K</i></div><Link className="kp-button kp-button-outline" href="/iletisim#teklif">Baskılı kutu için teklif alın<ArrowRight size={17} /></Link></div>
-        <div className="kb3-print-visual"><KraftImage src="/media/supplied/handled-diecut-box.png" alt="Kalıp kesim taşıma kutusu" width={505} height={396} /><span>Kalıp kesim · Klişe · Tam renk</span></div>
+        <div className="kb3-print-visual"><KraftImage src="/media/enhanced/handled-diecut-box-hd.png" alt="Kalıp kesim taşıma kutusu" width={1416} height={1111} /><span>Kalıp kesim · Klişe · Tam renk</span></div>
       </div>
     </section>
 
     <section className="kp-section kb3-technical">
       <div className="kp-container">
         <header className="kb3-section-head"><div><small>TEKNİK BİLGİ / 04</small><h2>Dalga ve katman seçenekleri</h2></div><p>Ürünün ağırlığı, istifleme koşulları ve sevkiyat biçimine göre uygun oluk ve katman yapısı belirlenir.</p><Link href="/uretim-kalite">Teknik bilgileri inceleyin <ArrowRight size={17} /></Link></header>
-        <div className="kb3-technical-grid"><figure><KraftImage src="/media/supplied/corrugated-layers.png" alt="Sırtı açık, tek dalga, çift dalga ve üç dalga oluklu mukavva yapıları" width={539} height={568} /><figcaption>Katman yapıları</figcaption></figure><figure><KraftImage src="/media/supplied/flute-types.png" alt="F, E, B ve C dalga oluklu mukavva seçenekleri" width={374} height={534} /><figcaption>Dalga seçenekleri</figcaption></figure></div>
+        <div className="kb3-technical-grid"><figure><KraftImage src="/media/enhanced/corrugated-layers-hd.png" alt="Sırtı açık, tek dalga, çift dalga ve üç dalga oluklu mukavva yapıları" width={1221} height={1289} /><figcaption>Katman yapıları</figcaption></figure><figure><KraftImage src="/media/enhanced/flute-types-hd.png" alt="F, E, B ve C dalga oluklu mukavva seçenekleri" width={1050} height={1498} /><figcaption>Dalga seçenekleri</figcaption></figure></div>
       </div>
     </section>
 

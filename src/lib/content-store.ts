@@ -39,14 +39,14 @@ export const adminPassword = process.env.ADMIN_PASSWORD ?? "";
 export const adminSessionSecret = process.env.ADMIN_SESSION_SECRET ?? "";
 
 const defaultProductRows = [
-  ["oluklu-mukavva-levha", "Oluklu Mukavva Levha", "Levha & Ondüle", "Farklı dalga, katman ve gramaj seçeneklerinde oluklu mukavva levhalar.", "/media/supplied/corrugated-layers.png", 50, 50],
-  ["normal-kutu", "Normal Kutu", "Kutu Çözümleri", "Taşıma, depolama ve lojistik için farklı ölçülerde standart kutular.", "/media/supplied/normal-box-and-sheets.png", 50, 50],
-  ["kalip-kesim-kutu", "Kalıp Kesim Kutu", "Kutu Çözümleri", "Ürüne göre kesilen, tam renk klişe baskıya uygun kutu çözümleri.", "/media/supplied/handled-diecut-box.png", 50, 50],
-  ["teleskopik-kutu", "Teleskopik Kutu", "Kutu Çözümleri", "Kapak ve gövdeden oluşan, koruma ihtiyacı yüksek ürünlere uygun kutular.", "/media/supplied/box-types.png", 50, 50],
-  ["ondule", "Ondüle", "Levha & Ondüle", "Sırtı açık, tek dalga, çift dalga ve üç dalga seçenekleri.", "/media/supplied/flute-types.png", 50, 50],
-  ["demonte-mobilya-kutulari", "Demonte Mobilya Kutuları", "Mobilya", "Mobilya parçalarının düzenli ve güvenli sevkiyatı için ölçülü ambalajlar.", "/media/supplied/box-size-variety.png", 50, 50],
-  ["ozel-olcu-kutu", "Özel Ölçü Kutu", "Özel Üretim", "Standart dışı ürünler için ölçü, gramaj ve kullanıma göre planlanan kutular.", "/media/supplied/box-types.png", 50, 50],
-  ["ozel-tasarim-ambalaj", "Özel Tasarım Ambalaj", "Özel Üretim", "Kalıp kesim ve tam renk klişe baskı seçenekli özel ambalajlar.", "/media/supplied/diecut-folding-example.png", 50, 50],
+  ["oluklu-mukavva-levha", "Oluklu Mukavva Levha", "Levha & Ondüle", "Farklı dalga, katman ve gramaj seçeneklerinde oluklu mukavva levhalar.", "/media/enhanced/corrugated-layers-hd.png", 50, 50],
+  ["normal-kutu", "Normal Kutu", "Kutu Çözümleri", "Taşıma, depolama ve lojistik için farklı ölçülerde standart kutular.", "/media/enhanced/normal-box-and-sheets-hd.png", 50, 50],
+  ["kalip-kesim-kutu", "Kalıp Kesim Kutu", "Kutu Çözümleri", "Ürüne göre kesilen, tam renk klişe baskıya uygun kutu çözümleri.", "/media/enhanced/handled-diecut-box-hd.png", 50, 50],
+  ["teleskopik-kutu", "Teleskopik Kutu", "Kutu Çözümleri", "Kapak ve gövdeden oluşan, koruma ihtiyacı yüksek ürünlere uygun kutular.", "/media/enhanced/box-types-hd.png", 50, 50],
+  ["ondule", "Ondüle", "Levha & Ondüle", "Sırtı açık, tek dalga, çift dalga ve üç dalga seçenekleri.", "/media/enhanced/flute-types-hd.png", 50, 50],
+  ["demonte-mobilya-kutulari", "Demonte Mobilya Kutuları", "Mobilya", "Mobilya parçalarının düzenli ve güvenli sevkiyatı için ölçülü ambalajlar.", "/media/enhanced/box-size-variety-hd.png", 50, 50],
+  ["ozel-olcu-kutu", "Özel Ölçü Kutu", "Özel Üretim", "Standart dışı ürünler için ölçü, gramaj ve kullanıma göre planlanan kutular.", "/media/enhanced/box-types-hd.png", 50, 50],
+  ["ozel-tasarim-ambalaj", "Özel Tasarım Ambalaj", "Özel Üretim", "Kalıp kesim ve tam renk klişe baskı seçenekli özel ambalajlar.", "/media/enhanced/diecut-folding-example-hd.png", 50, 50],
 ] as const;
 
 export const defaultSettings: SiteSettings = {

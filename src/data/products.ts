@@ -21,7 +21,7 @@ export const products: Product[] = [
     useCases: ["Ara katman çözümleri", "Özel kutu üretim altyapısı", "Koruyucu seperatör uygulamaları"],
     features: ["Farklı ölçü seçenekleri", "Üretim ihtiyacına göre planlanabilen form", "B2B sevkiyat süreçlerine uygun yapı"],
     advantages: ["Esnek kullanım senaryosu", "Kutu üretiminde temel malzeme", "İhtiyaca göre kesim ve ölçülendirme"],
-    media: ["/media/supplied/corrugated-layers.png", "/media/supplied/flute-types.png", "/media/supplied/normal-box-and-sheets.png"],
+    media: ["/media/enhanced/corrugated-layers-hd.png", "/media/enhanced/flute-types-hd.png", "/media/enhanced/normal-box-and-sheets-hd.png"],
   },
   {
     slug: "normal-kutu",
@@ -33,7 +33,7 @@ export const products: Product[] = [
     useCases: ["Genel sevkiyat", "Depo düzeni", "Toplu ürün paketleme"],
     features: ["Sade yapı", "Farklı ölçü alternatifleri", "Kolay istiflenebilir form"],
     advantages: ["Pratik kullanım", "Geniş uygulama alanı", "Kurumsal sevkiyat düzeni"],
-    media: ["/media/supplied/normal-box-and-sheets.png", "/media/supplied/box-types.png", "/media/supplied/box-size-variety.png"],
+    media: ["/media/enhanced/normal-box-and-sheets-hd.png", "/media/enhanced/box-types-hd.png", "/media/enhanced/box-size-variety-hd.png"],
   },
   {
     slug: "teleskopik-kutu",
@@ -45,7 +45,7 @@ export const products: Product[] = [
     useCases: ["Mobilya parçaları", "Hacimli ürünler", "Parça bazlı sevkiyat"],
     features: ["Kapak-gövde yapısı", "Farklı ebat üretimi", "Düzgün istifleme avantajı"],
     advantages: ["Koruma hissi yüksek form", "Sunum kalitesi", "Sevkiyat düzeni"],
-    media: ["/media/supplied/box-types.png", "/media/supplied/normal-box-and-sheets.png", "/media/supplied/box-size-variety.png"],
+    media: ["/media/enhanced/box-types-hd.png", "/media/enhanced/normal-box-and-sheets-hd.png", "/media/enhanced/box-size-variety-hd.png"],
   },
   {
     slug: "kalip-kesim-kutu",
@@ -57,7 +57,7 @@ export const products: Product[] = [
     useCases: ["Özel ürün formu", "Raf ve teşhir", "Fonksiyonel ambalaj"],
     features: ["Özel kesim olanağı", "Tam renk klişe baskı seçeneği", "Farklı kullanım alanlarına uyum"],
     advantages: ["Daha kontrollü yerleşim", "Ürüne göre şekillenme", "Kurumsal sunum desteği"],
-    media: ["/media/supplied/handled-diecut-box.png", "/media/supplied/diecut-folding-example.png", "/media/supplied/box-types.png"],
+    media: ["/media/enhanced/handled-diecut-box-hd.png", "/media/enhanced/diecut-folding-example-hd.png", "/media/enhanced/box-types-hd.png"],
   },
   {
     slug: "ondule",
@@ -69,7 +69,7 @@ export const products: Product[] = [
     useCases: ["Ayırıcı katman", "Koruyucu destek", "İç ambalaj çözümü"],
     features: ["Esnek kullanım", "Üretim planına uyum", "Farklı ebat uygulanabilirliği"],
     advantages: ["Yardımcı koruma", "Ürün gruplarını ayırma", "Paket bütünlüğünü destekleme"],
-    media: ["/media/supplied/flute-types.png", "/media/supplied/corrugated-layers.png", "/media/supplied/normal-box-and-sheets.png"],
+    media: ["/media/enhanced/flute-types-hd.png", "/media/enhanced/corrugated-layers-hd.png", "/media/enhanced/normal-box-and-sheets-hd.png"],
   },
   {
     slug: "demonte-mobilya-kutulari",
@@ -81,7 +81,7 @@ export const products: Product[] = [
     useCases: ["Panel mobilya", "Parçalı sevkiyat", "Demonte paketleme"],
     features: ["Geniş yüzeylere uygun yapı", "Parça bazlı düzenleme", "Sevkiyata uygun form"],
     advantages: ["Mobilya sektörüne uygun çözüm", "Depolama kolaylığı", "Daha düzenli sevkiyat"],
-    media: ["/media/supplied/box-size-variety.png", "/media/supplied/box-types.png", "/media/supplied/normal-box-and-sheets.png"],
+    media: ["/media/enhanced/box-size-variety-hd.png", "/media/enhanced/box-types-hd.png", "/media/enhanced/normal-box-and-sheets-hd.png"],
   },
   {
     slug: "ozel-olcu-kutu",
@@ -93,7 +93,7 @@ export const products: Product[] = [
     useCases: ["Standart dışı ürünler", "Özel sevkiyat projeleri", "Ölçüye göre üretim"],
     features: ["Proje bazlı ölçülendirme", "Esnek kutu tipi seçimi", "İhtiyaca göre planlama"],
     advantages: ["Boşluk kaybını azaltma", "Ürüne özel koruma", "Kurumsal üretim uyumu"],
-    media: ["/media/supplied/box-types.png", "/media/supplied/normal-box-and-sheets.png", "/media/supplied/handled-diecut-box.png"],
+    media: ["/media/enhanced/box-types-hd.png", "/media/enhanced/normal-box-and-sheets-hd.png", "/media/enhanced/handled-diecut-box-hd.png"],
   },
   {
     slug: "ozel-tasarim-ambalaj",
@@ -105,6 +105,6 @@ export const products: Product[] = [
     useCases: ["Kurumsal proje bazlı çözümler", "Ürün sunumu", "Fonksiyonel kutu yapıları"],
     features: ["Özelleştirilebilir yapı", "Tam renk klişe baskı seçeneği", "Kurumsal ihtiyaçlara uyum"],
     advantages: ["Proje odaklı çözüm", "Daha kontrollü sunum", "Ürün odaklı planlama"],
-    media: ["/media/supplied/diecut-folding-example.png", "/media/supplied/handled-diecut-box.png", "/media/supplied/box-types.png"],
+    media: ["/media/enhanced/diecut-folding-example-hd.png", "/media/enhanced/handled-diecut-box-hd.png", "/media/enhanced/box-types-hd.png"],
   },
 ];

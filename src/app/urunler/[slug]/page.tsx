@@ -8,14 +8,14 @@ import { CheckList, KraftImage, ProductCard, QuoteBand, type CardProduct } from 
 type Props = { params: Promise<{ slug: string }> };
 
 const fallbackImages: Record<string, string> = {
-  "oluklu-mukavva-levha": "/media/supplied/corrugated-layers.png",
-  "normal-kutu": "/media/supplied/normal-box-and-sheets.png",
-  "teleskopik-kutu": "/media/supplied/box-types.png",
-  "kalip-kesim-kutu": "/media/supplied/handled-diecut-box.png",
-  ondule: "/media/supplied/flute-types.png",
-  "demonte-mobilya-kutulari": "/media/supplied/box-size-variety.png",
-  "ozel-olcu-kutu": "/media/supplied/box-types.png",
-  "ozel-tasarim-ambalaj": "/media/supplied/diecut-folding-example.png",
+  "oluklu-mukavva-levha": "/media/enhanced/corrugated-layers-hd.png",
+  "normal-kutu": "/media/enhanced/normal-box-and-sheets-hd.png",
+  "teleskopik-kutu": "/media/enhanced/box-types-hd.png",
+  "kalip-kesim-kutu": "/media/enhanced/handled-diecut-box-hd.png",
+  ondule: "/media/enhanced/flute-types-hd.png",
+  "demonte-mobilya-kutulari": "/media/enhanced/box-size-variety-hd.png",
+  "ozel-olcu-kutu": "/media/enhanced/box-types-hd.png",
+  "ozel-tasarim-ambalaj": "/media/enhanced/diecut-folding-example-hd.png",
 };
 
 export const dynamic = "force-dynamic";
@@ -30,12 +30,12 @@ export default async function ProductDetailPage({ params }: Props) {
   const category = managed?.category || catalog?.category || "Kutu Çözümleri";
   const shortDescription = managed?.shortDescription || catalog?.shortDescription || "";
   const description = managed?.description || catalog?.description || shortDescription;
-  const primaryImage = fallbackImages[slug] || catalog?.media[0] || managed?.imageUrl || "/media/supplied/normal-box-and-sheets.png";
-  const media = catalog?.media?.length ? catalog.media : [primaryImage, "/media/supplied/box-types.png", "/media/supplied/corrugated-layers.png"];
+  const primaryImage = fallbackImages[slug] || catalog?.media[0] || managed?.imageUrl || "/media/enhanced/normal-box-and-sheets-hd.png";
+  const media = catalog?.media?.length ? catalog.media : [primaryImage, "/media/enhanced/box-types-hd.png", "/media/enhanced/corrugated-layers-hd.png"];
   const useCases = catalog?.useCases || ["Genel sevkiyat", "Depolama", "Ürün paketleme"];
   const features = catalog?.features || ["İhtiyaca göre ölçü", "Planlı üretim", "Kullanım amacına uygun yapı"];
   const advantages = catalog?.advantages || ["Pratik kullanım", "Düzenli istifleme", "Kurumsal sevkiyat uyumu"];
-  const related: CardProduct[] = allManaged.filter((item) => item.slug !== slug).slice(0, 3).map((item) => ({ slug: item.slug, title: item.name, description: item.shortDescription, category: item.category, image: fallbackImages[item.slug] || item.imageUrl || "/media/supplied/normal-box-and-sheets.png" }));
+  const related: CardProduct[] = allManaged.filter((item) => item.slug !== slug).slice(0, 3).map((item) => ({ slug: item.slug, title: item.name, description: item.shortDescription, category: item.category, image: fallbackImages[item.slug] || item.imageUrl || "/media/enhanced/normal-box-and-sheets-hd.png" }));
 
   return <>
     <section className="kb3-detail-hero"><div className="kp-container"><nav className="kb3-breadcrumbs" aria-label="Sayfa yolu"><Link href="/">Ana Sayfa</Link><span>/</span><Link href="/urunler">Ürünler</Link><span>/</span><b>{title}</b></nav><div className="kb3-detail-grid"><div><p className="kb3-eyebrow">{category}</p><h1>{title}</h1><p>{shortDescription}</p><Link className="kp-button kp-button-yellow" href={`/iletisim?urun=${encodeURIComponent(title)}#teklif`}>Teklif alın<ArrowRight size={17} /></Link></div><figure><KraftImage src={primaryImage} alt={title} priority /><figcaption>Ölçü ve gramaj ihtiyaca göre belirlenir</figcaption></figure></div></div></section>

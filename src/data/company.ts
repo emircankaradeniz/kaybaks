@@ -137,22 +137,22 @@ export const whyKaybaks = [
 
 export const galleryItems = [
   {
-    src: "/media/supplied/kaybaks-factory.png",
+    src: "/media/enhanced/kaybaks-factory-hd.png",
     alt: "KAYBAKS Kayseri üretim tesisi",
     title: "Kayseri Üretim Tesisi",
   },
   {
-    src: "/media/supplied/normal-box-and-sheets.png",
+    src: "/media/enhanced/normal-box-and-sheets-hd.png",
     alt: "Normal kutu ve oluklu mukavva levhalar",
     title: "Normal Kutu ve Levha",
   },
   {
-    src: "/media/supplied/handled-diecut-box.png",
+    src: "/media/enhanced/handled-diecut-box-hd.png",
     alt: "Kalıp kesim taşıma kutusu",
     title: "Kalıp Kesim Kutu",
   },
   {
-    src: "/media/supplied/corrugated-layers.png",
+    src: "/media/enhanced/corrugated-layers-hd.png",
     alt: "Oluklu mukavva katman yapıları",
     title: "Katman Seçenekleri",
   },
