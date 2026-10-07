@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, PhoneCall, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -36,7 +36,10 @@ export function SiteHeader() {
             return <Link key={link.href} href={link.href} className={active ? "active" : ""}>{link.label}</Link>;
           })}
         </nav>
-        <span className="kp-header-index" aria-hidden="true"><b>1999</b><small>ÜRETİME BAŞLANGIÇ</small></span>
+        <a href="tel:+903523222801" className="kp-header-index" aria-label="KAYBAKS'ı 0352 322 28 01 numarasından ara">
+          <span className="kp-header-index-icon" aria-hidden="true"><PhoneCall size={14} strokeWidth={2.2} /></span>
+          <span className="kp-header-index-copy"><b>0352 322 28 01</b><small>DOĞRUDAN İLETİŞİM</small></span>
+        </a>
         <Link href="/iletisim#teklif" className="kp-button kp-button-yellow kp-header-cta">Teklif Al <ArrowUpRight size={16} /></Link>
         <button className="kp-menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label={open ? "Menüyü kapat" : "Menüyü aç"}>{open ? <X /> : <Menu />}</button>
       </div>
