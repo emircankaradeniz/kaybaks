@@ -55,7 +55,7 @@ export const products: Product[] = [
     description:
       "Kalıp kesim kutular; standart kutu geometrisinin yeterli olmadığı, ürüne daha yakın oturan ve fonksiyonel açılıp kapanma ihtiyacı bulunan projelerde öne çıkar.",
     useCases: ["Özel ürün formu", "Raf ve teşhir", "Fonksiyonel ambalaj"],
-    features: ["Özel kesim olanağı", "Tam renk klişe baskı seçeneği", "Farklı kullanım alanlarına uyum"],
+    features: ["Özel kesim olanağı", "Tam renk baskı seçeneği", "Farklı kullanım alanlarına uyum"],
     advantages: ["Daha kontrollü yerleşim", "Ürüne göre şekillenme", "Kurumsal sunum desteği"],
     media: ["/media/enhanced/handled-diecut-box-hd.jpg", "/media/enhanced/diecut-folding-example-hd.jpg", "/media/enhanced/box-types-hd.jpg"],
   },
@@ -103,7 +103,7 @@ export const products: Product[] = [
     description:
       "Özel tasarım ambalaj çözümleri; teknik ölçü, kullanım alışkanlığı ve ürün sunumu gibi başlıkları birlikte ele alarak proje bazlı planlanır.",
     useCases: ["Kurumsal proje bazlı çözümler", "Ürün sunumu", "Fonksiyonel kutu yapıları"],
-    features: ["Özelleştirilebilir yapı", "Tam renk klişe baskı seçeneği", "Kurumsal ihtiyaçlara uyum"],
+    features: ["Özelleştirilebilir yapı", "Tam renk baskı seçeneği", "Kurumsal ihtiyaçlara uyum"],
     advantages: ["Proje odaklı çözüm", "Daha kontrollü sunum", "Ürün odaklı planlama"],
     media: ["/media/enhanced/diecut-folding-example-hd.jpg", "/media/enhanced/handled-diecut-box-hd.jpg", "/media/enhanced/box-types-hd.jpg"],
   },

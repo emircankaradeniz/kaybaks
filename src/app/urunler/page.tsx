@@ -30,7 +30,7 @@ export default async function ProductsPage() {
   return <>
     <section className="kb3-page-hero kb3-product-hero"><div className="kp-container kb3-page-hero-grid"><div><p className="kb3-eyebrow">ÜRÜNLER</p><h1>Levhadan özel kutuya, ihtiyacınıza göre üretim.</h1><p>Ölçü, gramaj, dalga tipi, kalıp ve baskı seçeneklerini ürününüzün kullanım koşullarına göre birlikte belirliyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Ürün için teklif alın<ArrowRight size={17} /></Link></div><figure><KraftImage src="/media/enhanced/box-types-hd.jpg" alt="KAYBAKS kutu çeşitleri" width={1536} height={1024} priority /><figcaption>Normal · Teleskopik · Kalıp kesim · Özel ölçü</figcaption></figure></div></section>
 
-    <section className="kb3-product-criteria"><div className="kp-container"><span><Ruler />Ölçü</span><span><Scale />Gramaj ve katman</span><span><Palette />Tam renk klişe baskı</span><span><Truck />Sevkiyat koşulu</span></div></section>
+    <section className="kb3-product-criteria"><div className="kp-container"><span><Ruler />Ölçü</span><span><Scale />Gramaj ve katman</span><span><Palette />Tam renk baskı</span><span><Truck />Sevkiyat koşulu</span></div></section>
 
     <section className="kp-section kb3-catalog"><div className="kp-container"><header className="kb3-section-head"><div><small>ÜRÜN KATALOĞU / 01</small><h2>Üretim grupları</h2></div><p>Ürün kartlarını kategoriye göre filtreleyebilir, detay sayfasından kullanım ve teknik özellikleri inceleyebilirsiniz.</p></header><KraftProductFilter products={products} /></div></section>
 

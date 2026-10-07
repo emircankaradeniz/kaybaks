@@ -32,7 +32,7 @@ export default async function HomePage() {
         <div className="kb3-hero-copy">
           <p className="kb3-eyebrow">KAYSERİ · OLUKLU MUKAVVA &amp; KUTU</p>
           <h1>Ürününüzü koruyan ambalajı <span>birlikte üretiyoruz.</span></h1>
-          <p className="kb3-lead">Oluklu mukavva levhadan özel ölçü kutuya, kalıp kesimden tam renk klişe baskıya kadar ihtiyacınıza uygun üretim.</p>
+          <p className="kb3-lead">Oluklu mukavva levhadan özel ölçü kutuya, kalıp kesimden tam renk baskıya kadar ihtiyacınıza uygun üretim.</p>
           <div className="kp-actions">
             <Link className="kp-button kp-button-yellow" href="/urunler">Ürünleri İnceleyin<ArrowRight size={17} /></Link>
             <Link className="kp-button kp-button-outline" href="/iletisim#teklif">Teklif İsteyin<ArrowRight size={17} /></Link>
@@ -55,7 +55,7 @@ export default async function HomePage() {
       <div className="kp-container">
         <span><Box />Normal ve teleskopik kutu</span>
         <span><PackageCheck />Kalıp kesim ve özel ölçü</span>
-        <span><Palette />Tam renk klişe baskı</span>
+        <span><Palette />Tam renk baskı</span>
         <span><Truck />Planlı sevkiyat</span>
       </div>
     </section>
@@ -91,8 +91,8 @@ export default async function HomePage() {
 
     <section className="kp-section kb3-print">
       <div className="kp-container kb3-print-grid">
-        <div className="kb3-print-copy"><small>BASKI &amp; KALIP / 03</small><h2>Klişe ve tam renk baskı</h2><p>Ambalajı yalnızca koruyucu değil, markanızı taşıyan bir yüzey olarak da ele alıyoruz. Kutu tasarımı, kalıp kesimi ve tam renk klişe baskı ihtiyaca göre birlikte planlanır.</p><div className="kb3-cmyk" aria-label="Tam renk baskı"><i>C</i><i>M</i><i>Y</i><i>K</i></div><Link className="kp-button kp-button-outline" href="/iletisim#teklif">Baskılı kutu için teklif alın<ArrowRight size={17} /></Link></div>
-        <div className="kb3-print-visual"><KraftImage src="/media/enhanced/handled-diecut-box-hd.jpg" alt="Kalıp kesim taşıma kutusu" width={1416} height={1111} /><span>Kalıp kesim · Klişe · Tam renk</span></div>
+        <div className="kb3-print-copy"><small>BASKI &amp; KALIP / 03</small><h2>Tam renk baskı</h2><p>Ambalajı yalnızca koruyucu değil, markanızı taşıyan bir yüzey olarak da ele alıyoruz. Kutu tasarımı, kalıp kesimi ve tam renk baskı ihtiyaca göre birlikte planlanır.</p><div className="kb3-cmyk" aria-label="Tam renk baskı"><i>C</i><i>M</i><i>Y</i><i>K</i></div><Link className="kp-button kp-button-outline" href="/iletisim#teklif">Baskılı kutu için teklif alın<ArrowRight size={17} /></Link></div>
+        <div className="kb3-print-visual"><KraftImage src="/media/enhanced/handled-diecut-box-hd.jpg" alt="Kalıp kesim taşıma kutusu" width={1416} height={1111} /><span>Kalıp kesim · Tam renk baskı</span></div>
       </div>
     </section>
 
