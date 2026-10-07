@@ -32,15 +32,8 @@ img { display: block; max-width: 100%; }
 
 .kp-header { position: sticky; top: 0; z-index: 80; background: rgba(251,248,241,.94); border-bottom: 1px solid var(--kp-line); backdrop-filter: blur(14px); }
 .kp-header-inner { height: 82px; display: flex; align-items: center; gap: 34px; }
-.kp-brand { display: inline-flex; align-items: center; gap: 11px; min-width: 190px; }
-.kp-brand-mark { position: relative; width: 36px; height: 40px; display: block; transform: rotate(30deg); }
-.kp-brand-mark i { position: absolute; width: 19px; height: 21px; background: var(--kp-yellow); clip-path: polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }
-.kp-brand-mark i:nth-child(1) { left: 0; top: 0; }
-.kp-brand-mark i:nth-child(2) { right: 0; top: 9px; filter: brightness(.88); }
-.kp-brand-mark i:nth-child(3) { left: 1px; bottom: 0; filter: brightness(.72); }
-.kp-brand-type { display: flex; flex-direction: column; line-height: 1; }
-.kp-brand-type b { font-size: 25px; letter-spacing: -.055em; font-weight: 900; }
-.kp-brand-type small { margin-top: 7px; font-size: 7px; letter-spacing: .32em; font-weight: 800; }
+.kp-brand { display: inline-flex; align-items: center; min-width: 190px; }
+.kp-brand-image { width: 200px; height: auto; }
 .kp-nav { display: flex; align-items: stretch; justify-content: center; gap: 26px; height: 100%; flex: 1; }
 .kp-nav a { position: relative; display: flex; align-items: center; white-space: nowrap; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
 .kp-nav a::after { content: ""; position: absolute; left: 50%; right: 50%; bottom: 20px; height: 3px; background: var(--kp-yellow); transition: .2s ease; }
@@ -122,7 +115,7 @@ img { display: block; max-width: 100%; }
 .kp-phone-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 900; white-space: nowrap; }
 
 .kp-footer { background: var(--kp-ink); color: white; padding-top: 58px; }
-.kp-footer .kp-brand-mark { transform: rotate(30deg) scale(.9); }
+.kp-footer .kp-brand-image { width: 240px; }
 .kp-footer-grid { display: grid; grid-template-columns: 1.4fr .7fr .8fr 1.1fr; gap: 46px; }
 .kp-footer-intro p { max-width: 360px; color: #a9a69f; line-height: 1.75; font-size: 12px; margin-top: 22px; }
 .kp-footer-grid h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; margin: 4px 0 16px; }
@@ -387,8 +380,7 @@ img { display: block; max-width: 100%; }
 @media (max-width: 560px) {
   .kp-container { width: min(calc(100% - 24px), 520px); }
   .kp-brand { min-width: 0; }
-  .kp-brand-type b { font-size: 21px; }
-  .kp-brand-type small { font-size: 6px; }
+  .kp-brand-image { width: 170px; }
   .kp-home-hero-grid { padding-block: 38px; }
   .kp-home-copy h1 { font-size: clamp(44px, 13.5vw, 58px); line-height: .82; }
   .kp-mobile-break { display: block; }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Menu, PhoneCall, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -17,8 +18,13 @@ const links = [
 export function Brand() {
   return (
     <span className="kp-brand" aria-label="KAYBAKS Oluklu Mukavva ve Kutu">
-      <span className="kp-brand-mark" aria-hidden="true"><i /><i /><i /></span>
-      <span className="kp-brand-type"><b><span>KAY</span><em>BAKS</em></b><small>OLUKLU MUKAVVA &amp; KUTU</small></span>
+      <Image
+        className="kp-brand-image"
+        src="/brand/kaybaks-logo-clean-hd.png"
+        alt="KAYBAKS Oluklu Mukavva ve Kutu"
+        width={2172}
+        height={724}
+      />
     </span>
   );
 }
