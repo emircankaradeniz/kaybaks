@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { ArrowRight, ClipboardCheck, Factory, Palette, Ruler, Truck } from "lucide-react";
 import { KraftImage, QuoteBand } from "@/components/ui/kraft";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "Oluklu Mukavva Üretimi ve Kalite",
+  description: "Oluklu mukavva dalga ve katman seçenekleri, gramaj, kalıp kesim, tam renk baskı, kalite kontrol ve planlı sevkiyat sürecimizi inceleyin.",
+  path: "/uretim-kalite",
+  image: "/media/enhanced/corrugated-layers-hd.jpg",
+  keywords: ["oluklu mukavva üretimi", "kutu üretim süreci", "oluklu mukavva dalga çeşitleri", "ambalaj kalite kontrol"],
+});
 
 const steps = [
   [Ruler, "01", "İhtiyacın belirlenmesi", "Ürün ölçüsü, ağırlığı, kullanım alanı ve sevkiyat biçimi alınır."],

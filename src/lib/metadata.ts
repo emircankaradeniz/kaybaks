@@ -1,56 +1,51 @@
 import type { Metadata } from "next";
 import { company } from "@/data/company";
 
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || company.siteUrl;
+
 type MetadataInput = {
   title: string;
   description: string;
   path: string;
+  image?: string;
   keywords?: string[];
 };
 
-export function absoluteUrl(path: string) {
-  const normalized = path.startsWith("/") ? path : `/${path}`;
-  return new URL(normalized, company.siteUrl).toString();
+export function absoluteUrl(path = "/") {
+  return new URL(path, siteUrl).toString();
 }
 
-export function buildMetadata({
+export function createPageMetadata({
   title,
   description,
   path,
+  image = "/opengraph-image",
   keywords = [],
 }: MetadataInput): Metadata {
-  const url = absoluteUrl(path);
-  const fullTitle = title === company.shortName ? title : `${title} | ${company.shortName}`;
+  const canonical = absoluteUrl(path);
+  const imageUrl = absoluteUrl(image);
 
   return {
-    metadataBase: new URL(company.siteUrl),
-    title: fullTitle,
+    title,
     description,
     keywords,
-    alternates: {
-      canonical: url,
-    },
+    alternates: { canonical },
     openGraph: {
-      title: fullTitle,
-      description,
-      url,
-      siteName: company.shortName,
-      locale: "tr_TR",
       type: "website",
-      images: [
-        {
-          url: absoluteUrl("/opengraph-image"),
-          width: 1200,
-          height: 630,
-          alt: `${company.shortName} kurumsal web sitesi görseli`,
-        },
-      ],
+      locale: "tr_TR",
+      url: canonical,
+      siteName: company.shortName,
+      title,
+      description,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${company.shortName} oluklu mukavva ve kutu üretimi` }],
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title,
       description,
-      images: [absoluteUrl("/opengraph-image")],
+      images: [imageUrl],
     },
   };
 }
+
+export const buildMetadata = createPageMetadata;

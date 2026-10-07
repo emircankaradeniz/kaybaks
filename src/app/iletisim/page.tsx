@@ -1,6 +1,15 @@
 import { ArrowUpRight, Clock3, Mail, MapPin, Phone, Send } from "lucide-react";
 import { getSettings } from "@/lib/content-store";
 import { KraftImage } from "@/components/ui/kraft";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "İletişim ve Ambalaj Teklifi",
+  description: "Kayseri oluklu mukavva ve karton kutu üretimi için KAYBAKS'a ulaşın. Ölçü, adet ve kullanım bilgilerinizi paylaşarak teklif alın.",
+  path: "/iletisim",
+  image: "/media/enhanced/kaybaks-factory-hd.jpg",
+  keywords: ["Kayseri kutu fabrikası iletişim", "oluklu mukavva teklifi", "karton kutu fiyat teklifi"],
+});
 
 export const dynamic = "force-dynamic";
 

@@ -2,6 +2,14 @@ import Link from "next/link";
 import { ArrowRight, Box, Factory, PackageCheck, Palette, Truck } from "lucide-react";
 import { getProducts } from "@/lib/content-store";
 import { KraftImage, QuoteBand, type CardProduct } from "@/components/ui/kraft";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "Kayseri Oluklu Mukavva ve Kutu Üreticisi | KAYBAKS",
+  description: "Kayseri'de oluklu mukavva levha, karton kutu, kalıp kesim kutu ve özel ölçü ambalaj üretimi. KAYBAKS ile üretiminizi planlayın.",
+  path: "/",
+  keywords: ["Kayseri oluklu mukavva", "Kayseri kutu üreticisi", "karton kutu üretimi", "ambalaj fabrikası"],
+});
 
 export const dynamic = "force-dynamic";
 

@@ -2,6 +2,15 @@ import Link from "next/link";
 import { ArrowRight, Box, Ruler, Scale, Truck } from "lucide-react";
 import { sectors } from "@/data/sectors";
 import { KraftImage, QuoteBand } from "@/components/ui/kraft";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "Sektörel Ambalaj Çözümleri",
+  description: "Mobilya, gıda, tekstil, beyaz eşya, çelik eşya ve kimya sektörleri için ürüne ve sevkiyata uygun oluklu mukavva ambalaj çözümleri.",
+  path: "/sektorel-cozumler",
+  image: "/media/enhanced/box-size-variety-hd.jpg",
+  keywords: ["mobilya kutusu", "gıda ambalajı", "sektörel ambalaj", "demonte mobilya kutusu"],
+});
 
 const images = [
   "/media/enhanced/box-size-variety-hd.jpg",

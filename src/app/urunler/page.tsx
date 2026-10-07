@@ -3,6 +3,16 @@ import { ArrowRight, Palette, Ruler, Scale, Truck } from "lucide-react";
 import { getProducts } from "@/lib/content-store";
 import { KraftImage, QuoteBand, type CardProduct } from "@/components/ui/kraft";
 import { KraftProductFilter } from "@/components/ui/kraft-product-filter";
+import { JsonLd } from "@/components/seo/json-ld";
+import { absoluteUrl, createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "Oluklu Mukavva ve Karton Kutu Çeşitleri",
+  description: "Oluklu mukavva levha, normal kutu, teleskopik kutu, kalıp kesim kutu, ondüle ve özel ölçü ambalaj çözümlerini inceleyin.",
+  path: "/urunler",
+  image: "/media/enhanced/box-types-hd.jpg",
+  keywords: ["oluklu mukavva çeşitleri", "karton kutu çeşitleri", "özel ölçü kutu", "kalıp kesim kutu"],
+});
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +37,20 @@ export default async function ProductsPage() {
     image: fallbackImages[product.slug] || product.imageUrl || "/media/enhanced/normal-box-and-sheets-hd.jpg",
   }));
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "KAYBAKS Oluklu Mukavva ve Kutu Ürünleri",
+    itemListElement: products.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: product.title,
+      url: absoluteUrl(`/urunler/${product.slug}`),
+    })),
+  };
+
   return <>
+    <JsonLd data={itemListSchema} />
     <section className="kb3-page-hero kb3-product-hero"><div className="kp-container kb3-page-hero-grid"><div><p className="kb3-eyebrow">ÜRÜNLER</p><h1>Levhadan özel kutuya, ihtiyacınıza göre üretim.</h1><p>Ölçü, gramaj, dalga tipi, kalıp ve baskı seçeneklerini ürününüzün kullanım koşullarına göre birlikte belirliyoruz.</p><Link className="kp-button kp-button-yellow" href="/iletisim#teklif">Ürün için teklif alın<ArrowRight size={17} /></Link></div><figure><KraftImage src="/media/enhanced/box-types-hd.jpg" alt="KAYBAKS kutu çeşitleri" width={1536} height={1024} priority /><figcaption>Normal · Teleskopik · Kalıp kesim · Özel ölçü</figcaption></figure></div></section>
 
     <section className="kb3-product-criteria"><div className="kp-container"><span><Ruler />Ölçü</span><span><Scale />Gramaj ve katman</span><span><Palette />Tam renk baskı</span><span><Truck />Sevkiyat koşulu</span></div></section>

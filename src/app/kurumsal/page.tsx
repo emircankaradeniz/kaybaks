@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { ArrowRight, Handshake, PackageCheck, Truck } from "lucide-react";
 import { KraftImage, QuoteBand } from "@/components/ui/kraft";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "Kurumsal",
+  description: "1999'dan gelen üretim deneyimiyle Kayseri'de oluklu mukavva, karton kutu ve özel ambalaj çözümleri üreten KAYBAKS'ı tanıyın.",
+  path: "/kurumsal",
+  image: "/media/enhanced/kaybaks-factory-hd.jpg",
+  keywords: ["KAYBAKS", "Kayseri ambalaj fabrikası", "oluklu mukavva üreticisi"],
+});
 
 const sectors = ["Mobilya", "Gıda", "Tekstil", "Beyaz eşya", "Çelik eşya", "Kimya"];
 
