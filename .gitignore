@@ -21,6 +21,9 @@
 /build
 /dist
 /.vinext
+/ihs-static/
+/ihs-part-*.zip
+/kaybaks-ihs-live.zip
 
 # local Cloudflare/runtime data
 /.wrangler
